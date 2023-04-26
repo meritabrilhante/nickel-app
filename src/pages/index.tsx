@@ -1,5 +1,9 @@
 const Home = () => {
-  return <></>
+  return (
+    <>
+      <p>Nickel App</p>
+    </>
+  )
 }
 
 export default Home
