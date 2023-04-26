@@ -59,7 +59,7 @@ export interface NickelTokens {
  * @prop {NickelTokens} tokens
  */
 
-export interface NickelNewTheme {
+export interface NickelTheme {
   tokens: NickelTokens
 }
 
@@ -68,7 +68,7 @@ export interface NickelNewTheme {
  * @constant
  */
 
-export const theme: NickelNewTheme = {
+export const theme: NickelTheme = {
   // INFO: everything inside ":root" are tokens from the design system. The tokens must exist and be identical
   // to the file "theme.ts" (inside "tokens") and to the file "global.scss" (inside ":root").
 
