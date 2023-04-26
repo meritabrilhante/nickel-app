@@ -1,0 +1,15 @@
+@import "../app/presentation/styles/index.scss";
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: inherit;
+  width: inherit;
+  font: normal, 1rem, var(--font-family-base), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: var(--color-background);
+  color: var(--color-light);
+}
