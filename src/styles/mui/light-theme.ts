@@ -122,6 +122,21 @@ const muiLightTheme = createTheme({
         },
       },
     },
+
+    MuiFilledInput: {
+      defaultProps: {
+        size: 'small',
+      },
+      styleOverrides: {
+        root: {
+          borderRadius: '8px',
+          color: 'var(--color-secondary-dark)',
+          margin: '0',
+          borderBottom: 'none',
+        }
+
+      },
+    },
   },
 })
 

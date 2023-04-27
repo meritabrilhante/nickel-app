@@ -1,10 +1,8 @@
-import { SimpleLayout } from "@/app/presentation/components/layout/simpleLayout"
+import MainLayout from "@/app/presentation/components/layout/main-layout/MainLayout.component"
 
 const Home = () => {
   return (
-    <SimpleLayout>
-      <p>A</p>
-    </SimpleLayout>
+    <MainLayout width={'100%'}> </MainLayout>
   )
 }
 
