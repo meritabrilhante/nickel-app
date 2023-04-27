@@ -122,21 +122,37 @@ const muiLightTheme = createTheme({
         },
       },
     },
-
-    MuiFilledInput: {
-      defaultProps: {
-        size: 'small',
-      },
+    MuiInputBase: {
       styleOverrides: {
         root: {
           borderRadius: '8px',
-          color: 'var(--color-secondary-dark)',
-          margin: '0',
-          borderBottom: 'none',
-        }
-
+          backgroundColor: 'var(--color-secondary)',
+          fontFamily: 'var(--font-family-base)',
+          height: '2.5rem',
+          color: 'var(--color-light)',
+          padding: '1rem',
+          '&.Mui-focused': {
+            border: '1px solid var(--color-light)'
+          }
+        },
       },
     },
+    MuiInputLabel : {
+      styleOverrides: {
+        root: {
+          fontWeight: 'semibold',
+          margin: '0px',
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          height: '1rem',
+          color: 'var(--color-light)'
+        }
+      }
+    }
   },
 })
 

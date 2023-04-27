@@ -1,4 +1,5 @@
-import { Box, BoxProps, Stack, Link, styled, Input, TextField, FilledInput } from '@mui/material';
+import { Box, BoxProps, Link, styled } from '@mui/material';
+import Search from '@/core/components/search/Search.component';
 
 interface HeaderContainerProps extends BoxProps {
   width: string
@@ -30,7 +31,7 @@ const MidHeaderContainer = styled(Box)(({ width }: UpHeaderContainerProps) => ({
   paddingRight: '10rem',
   height: '5rem',
   width: '100%',
-  backgroundColor: 'var(--color-secondary)'
+  backgroundColor: 'var(--color-tertiary)'
 }));
 interface FullHeaderProps {
   width: string
@@ -51,6 +52,10 @@ const Header = ({ width }: FullHeaderProps) => {
           <Link href='' underline='none' color='inherit'>
             <h2>Nickel App</h2>
           </Link>
+
+          <Search />
+
+          <div>User Menu</div>
         </MidHeaderContainer>
     </FullHeaderContainer>
   )

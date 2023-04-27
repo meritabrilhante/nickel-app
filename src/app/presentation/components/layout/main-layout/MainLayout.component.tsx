@@ -1,6 +1,7 @@
 import { Box, BoxProps, Stack, styled } from '@mui/material';
 import  Footer  from '@/app/presentation/components/layout/footer/Footer.component';
-import { Header } from '../header';
+import  Header  from '@/app/presentation/components/layout/header/Header.component';
+import Head from 'next/head';
 
 /**
  * Interface that defines the properties for the HeaderContainer component
@@ -43,6 +44,10 @@ interface MainLayoutProps {
 const MainLayout = ({ children, width }: MainLayoutProps) => {
   return (
     <MainLayoutContainer width={width}>
+      <Head>
+        <title>Nickel App | Home</title>
+      </Head>
+
       <Header width={width}/>
         {children}
       <Footer width={'100%'}/>
