@@ -8,7 +8,8 @@ html {
 body {
   height: inherit;
   width: inherit;
-  font: normal, 1rem, var(--font-family-base), sans-serif;
+  font-family: var(--font-family-base), sans-serif;
+  font: normal, 1rem;
   -webkit-font-smoothing: antialiased;
   background: var(--color-background);
   color: var(--color-light);

@@ -1,8 +1,10 @@
+import { SimpleLayout } from "@/app/presentation/components/layout/simpleLayout"
+
 const Home = () => {
   return (
-    <>
-      <p>Nickel App</p>
-    </>
+    <SimpleLayout>
+      <p>A</p>
+    </SimpleLayout>
   )
 }
 
