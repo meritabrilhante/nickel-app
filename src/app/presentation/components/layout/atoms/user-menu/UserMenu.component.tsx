@@ -2,15 +2,10 @@ import Avatar from '@mui/material/Avatar';
 import { Box, Button, Menu, MenuItem, Stack, styled } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-const UserMenuContainer = styled(Box)(({ width }: UserMenuProps) => ({
+const UserMenuContainer = styled(Box)(() => ({
   display: 'flex',
   justifyContent: 'space-between',
-  width: width
 }));
-
-interface UserMenuProps {
-  width: string
-}
 
 const styles = {
   button: {
@@ -20,9 +15,9 @@ const styles = {
   },
 };
 
-const UserMenu = ({ width }: UserMenuProps) => {
+const UserMenu = () => {
   return(
-    <UserMenuContainer width={width}>
+    <UserMenuContainer>
       <Stack spacing={1} direction={'row'} alignItems={'center'}>
         <Button style={styles.button} id='user-menu'>
           <Avatar>UN</Avatar>

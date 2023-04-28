@@ -1,6 +1,9 @@
-import { Box, BoxProps, Link, styled } from '@mui/material';
+import { Box, BoxProps, Button, Link, styled, Stack } from '@mui/material';
 import SearchComponent from '@/core/components/search/Search.component';
 import { UserMenu } from '../atoms/user-menu';
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
+import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
+import LocalCafeIcon from '@mui/icons-material/LocalCafe';
 
 interface HeaderContainerProps extends BoxProps {
   width: string
@@ -24,16 +27,25 @@ const UpHeaderContainer = styled(Box)(({ width }: UpHeaderContainerProps) => ({
   backgroundColor: 'var(--color-primary-pure)'
 }));
 
+const SubHeaderContainer = styled(Box)(() => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexDirection: 'row',
+  backgroundColor: 'var(--color-tertiary)',
+  padding: '0.8rem',
+  width: '100%'
+}));
+
 const MidHeaderContainer = styled(Box)(({ width }: UpHeaderContainerProps) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  paddingLeft: '10rem',
-  paddingRight: '10rem',
-  height: '5rem',
+  padding: '0.8rem 10rem',
   width: '100%',
   backgroundColor: 'var(--color-tertiary)'
 }));
+
 interface FullHeaderProps {
   width: string
 }
@@ -41,6 +53,12 @@ interface FullHeaderProps {
 interface UpHeaderContainerProps {
   width: string
 }
+
+const styles = {
+  button: {
+    fontFamily: 'var(--font-family-base)'
+  }
+};
 
 const Header = ({ width }: FullHeaderProps) => {
   return (
@@ -56,8 +74,27 @@ const Header = ({ width }: FullHeaderProps) => {
 
           <SearchComponent />
 
-          <UserMenu width='256px'/>
+          <UserMenu />
         </MidHeaderContainer>
+
+        <SubHeaderContainer>
+          <Stack spacing={2} direction={'row'}>
+            <Button style={styles.button}>
+              <SpaceDashboardIcon />
+              Explorar
+            </Button>
+
+            <Button style={styles.button}>
+              <MeetingRoomIcon />
+              Minhas Salas
+            </Button>
+
+            <Button style={styles.button}>
+              <LocalCafeIcon />
+              Minhas Interações
+            </Button>
+          </Stack>
+        </SubHeaderContainer>
     </FullHeaderContainer>
   )
 }
