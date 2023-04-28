@@ -101,11 +101,10 @@ const muiLightTheme = createTheme({
         disableRipple: true,
         size: "large",
         variant: "contained",
-        color: "primary",
       },
       styleOverrides: {
         root: {
-          borderRadius: "0px 8px 8px 8px",
+          backgroundColor: 'transparent',
           fontFamily: "var(--font-family-primary)",
           lineHeight: "var(--line-height-sm)",
           fontWeight: "var(--font-weight-m)",
@@ -118,7 +117,9 @@ const muiLightTheme = createTheme({
           alignItems: "center",
           justifyContent: "center",
           gap: "0.5rem",
-          transition: "background-color 200ms, color 200ms, border-color 200ms",
+          '&:hover': {
+            backgroundColor: 'transparent'
+          }
         },
       },
     },
