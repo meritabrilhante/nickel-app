@@ -149,10 +149,25 @@ const muiLightTheme = createTheme({
       styleOverrides: {
         root: {
           height: '1rem',
-          color: 'var(--color-light)'
+          color: 'var(--color-light)',
+          padding: '0px',
+          '&.Mui-hover': {
+            backgroundColor: 'none'
+          }
         }
       }
-    }
+    },
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'var(--font-family-base)',
+          fontWeight: 'var(--font-weight-semibold)',
+          height: '2.4rem',
+          fontSize: '1rem',
+          backgroundColor: 'var(--color-secondary)'
+        }
+      }
+    },
   },
 })
 

@@ -1,5 +1,6 @@
 import { Box, BoxProps, Link, styled } from '@mui/material';
-import Search from '@/core/components/search/Search.component';
+import SearchComponent from '@/core/components/search/Search.component';
+import { UserMenu } from '../atoms/user-menu';
 
 interface HeaderContainerProps extends BoxProps {
   width: string
@@ -53,9 +54,9 @@ const Header = ({ width }: FullHeaderProps) => {
             <h2>Nickel App</h2>
           </Link>
 
-          <Search />
+          <SearchComponent />
 
-          <div>User Menu</div>
+          <UserMenu width='256px'/>
         </MidHeaderContainer>
     </FullHeaderContainer>
   )
