@@ -26,13 +26,16 @@ interface InputProps {
   message?: string
   placeholder?: string
   width?: string
+  state?: InputState
 }
+
+export type InputState = "error" | "sucess" | "disabled"
 
 const Input = ({ children, label, message, placeholder }: InputProps) => {
   return (
     <InputContainer height={"40px"}>
       <Stack spacing={1}>
-        <InputLabel>{label} Label</InputLabel>
+        <InputLabel>{label}</InputLabel>
 
         <InputBase
           type="text"
@@ -44,7 +47,7 @@ const Input = ({ children, label, message, placeholder }: InputProps) => {
           }
         ></InputBase>
 
-        <p style={{ fontSize: "0.875rem" }}>{message} Messagem</p>
+        <p style={{ fontSize: "0.875rem" }}>{message}</p>
       </Stack>
     </InputContainer>
   )
