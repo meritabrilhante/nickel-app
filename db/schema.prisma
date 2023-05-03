@@ -13,18 +13,25 @@ generator client {
 // --------------------------------------
 
 model User {
-  id             String   @id @default(uuid())
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-  first_name     String?
-  last_name      String?
-  email          String   @unique
-  hashedPassword String?
-  role           String   @default("USER")
+  id             String        @id @default(uuid())
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  first_name     String
+  last_name      String
+  email          String        @unique
+  password       String
+  institute      String?
+  course         String?
+  user_type      String?
+  user_situation userSituation
+  description    String?
+  tokens         Token[]
+  sessions       Session[]
+}
 
-  tokens    Token[]
-  sessions  Session[]
-  user_type String
+enum userSituation {
+  USER
+  ADMIN
 }
 
 model Session {
@@ -55,4 +62,10 @@ model Token {
   userId String
 
   @@unique([hashedToken, type])
+}
+
+model UserSituation {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
