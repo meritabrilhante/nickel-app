@@ -104,7 +104,7 @@ const muiLightTheme = createTheme({
       },
       styleOverrides: {
         root: {
-          backgroundColor: 'transparent',
+          backgroundColor: "transparent",
           fontFamily: "var(--font-family-primary)",
           lineHeight: "var(--line-height-sm)",
           fontWeight: "var(--font-weight-m)",
@@ -117,57 +117,60 @@ const muiLightTheme = createTheme({
           alignItems: "center",
           justifyContent: "center",
           gap: "0.5rem",
-          '&:hover': {
-            backgroundColor: 'transparent'
-          }
+          "&:hover": {
+            backgroundColor: "transparent",
+          },
         },
       },
     },
     MuiInputBase: {
       styleOverrides: {
         root: {
-          borderRadius: '8px',
-          backgroundColor: 'var(--color-secondary)',
-          fontFamily: 'var(--font-family-base)',
-          height: '2.5rem',
-          color: 'var(--color-light)',
-          padding: '1rem',
-          '&.Mui-focused': {
-            border: '1px solid var(--color-light)'
-          }
+          borderRadius: "8px",
+          backgroundColor: "var(--color-secondary)",
+          fontFamily: "var(--font-family-base)",
+          height: "2.5rem",
+          color: "var(--color-light)",
+          padding: "1rem",
+          "&.Mui-focused": {
+            border: "1px solid var(--color-light)",
+          },
         },
       },
     },
-    MuiInputLabel : {
+    MuiInputLabel: {
       styleOverrides: {
         root: {
-          fontWeight: 'semibold',
-          margin: '0px',
+          fontWeight: "semibold",
+          margin: "0px",
+          color: "var(--color-light)",
+          fontFamily: "var(--font-family-base)",
+          fontSize: "14px",
         },
       },
     },
     MuiIconButton: {
       styleOverrides: {
         root: {
-          height: '1rem',
-          color: 'var(--color-light)',
-          padding: '0px',
-          '&.Mui-hover': {
-            backgroundColor: 'none'
-          }
-        }
-      }
+          height: "1rem",
+          color: "var(--color-light)",
+          padding: "0px",
+          "&.Mui-hover": {
+            backgroundColor: "none",
+          },
+        },
+      },
     },
     MuiAvatar: {
       styleOverrides: {
         root: {
-          fontFamily: 'var(--font-family-base)',
-          fontWeight: 'var(--font-weight-semibold)',
-          height: '2.4rem',
-          fontSize: '1rem',
-          backgroundColor: 'var(--color-secondary)'
-        }
-      }
+          fontFamily: "var(--font-family-base)",
+          fontWeight: "var(--font-weight-semibold)",
+          height: "2.4rem",
+          fontSize: "1rem",
+          backgroundColor: "var(--color-secondary)",
+        },
+      },
     },
   },
 })
