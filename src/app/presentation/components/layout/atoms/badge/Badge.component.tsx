@@ -6,7 +6,7 @@ const Badge = styled(Box)(({ mainColor, borderRadius, height }: BadgeProps) => (
   display: "flex",
   alignItems: "center",
   color: `${mainColor}`,
-  background: hexToRgb(mainColor),
+  background: hexToRgb(mainColor, "0.08"),
   borderRadius: borderRadius,
   border: `2px solid ${mainColor}`,
   paddingLeft: "1rem",
