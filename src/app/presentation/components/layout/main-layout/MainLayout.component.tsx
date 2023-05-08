@@ -1,7 +1,8 @@
-import { Box, BoxProps, Stack, styled } from '@mui/material';
-import  Footer  from '@/app/presentation/components/layout/footer/Footer.component';
-import  Header  from '@/app/presentation/components/layout/header/Header.component';
-import Head from 'next/head';
+import { Box, BoxProps, styled } from "@mui/material"
+import Footer from "@/app/presentation/components/layout/footer/Footer.component"
+import Header from "@/app/presentation/components/layout/header/Header.component"
+import Head from "next/head"
+import Button from "../atoms/button/Button.component"
 
 /**
  * Interface that defines the properties for the HeaderContainer component
@@ -15,12 +16,12 @@ interface MainLayoutContainerProps extends BoxProps {
 }
 
 const MainLayoutContainer = styled(Box)(({ width }: MainLayoutContainerProps) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  flexDirection: 'column',
-  height: '100vh',
-}));
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  flexDirection: "column",
+  height: "100vh",
+}))
 
 /**
  * Interface that defines the properties for the Header component
@@ -30,7 +31,7 @@ const MainLayoutContainer = styled(Box)(({ width }: MainLayoutContainerProps) =>
  */
 
 interface MainLayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
   width: string
 }
 
@@ -48,11 +49,11 @@ const MainLayout = ({ children, width }: MainLayoutProps) => {
         <title>Nickel App | Home</title>
       </Head>
 
-      <Header width={width}/>
-        {children}
-      <Footer width={'100%'}/>
+      <Header width={width} />
+      {children}
+      <Footer width={"100%"} />
     </MainLayoutContainer>
-  );
-};
+  )
+}
 
-export default MainLayout;
+export default MainLayout
