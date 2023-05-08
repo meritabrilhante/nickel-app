@@ -104,22 +104,17 @@ const muiLightTheme = createTheme({
       },
       styleOverrides: {
         root: {
-          backgroundColor: "transparent",
           fontFamily: "var(--font-family-primary)",
           lineHeight: "var(--line-height-sm)",
           fontWeight: "var(--font-weight-m)",
           fontSize: "var(--font-size-xs)",
           textAlign: "center",
           textTransform: "none",
-          padding: "0 1rem",
           border: "inherit",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           gap: "0.5rem",
-          "&:hover": {
-            backgroundColor: "transparent",
-          },
         },
       },
     },
