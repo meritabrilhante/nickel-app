@@ -20,10 +20,10 @@ model User {
   email          String   @unique
   hashedPassword String?
   role           String   @default("USER")
+  user_type      String
 
-  tokens    Token[]
-  sessions  Session[]
-  user_type String
+  tokens   Token[]
+  sessions Session[]
 }
 
 model Session {
@@ -62,4 +62,12 @@ model Report {
   description String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Emblem {
+  id          String    @id @default(uuid())
+  name        String?
+  description String?
+  createdAt   DateTime? @default(now())
+  extinctAt   DateTime
 }
