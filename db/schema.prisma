@@ -63,3 +63,27 @@ model Report {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model Room {
+  id          Int      @id @default(uuid())
+  title       String
+  description String
+  institute   String   @default(IFB)
+  visibility  Enum
+  password    String?
+  createdAt   DateTime @default(now())
+
+  room_manager Room_manager[]
+  room_report  Room_report[]
+  room_user    Room_user[]
+
+  user     User     @relation(fields: [creator], references: [id])
+  creator  String
+  category Category @relation(fields: [category], references: [id])
+  category Int
+}
+
+enum visibility {
+  PUBLIC
+  PRIVATE
+}
