@@ -25,8 +25,14 @@ model User {
   user_type      String?
   user_situation userSituation
   description    String?
-  tokens         Token[]
-  sessions       Session[]
+
+  tokens       Token[]
+  sessions     Session[]
+  rooms        Rooms[]
+  room_user    Room_user[]
+  awnser       Awnser[]
+  discussion   Discussion[]
+  user_emblems User_emblems[]
 }
 
 enum userSituation {
