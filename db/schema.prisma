@@ -63,3 +63,33 @@ model Report {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model Discussion {
+  id                   String   @id @default(uuid())
+  title                String
+  subject              String?
+  question_description String?
+  createdAt            DateTime @default(now())
+  belong_in_room       Int
+  status               Enum
+
+  awnser              Awnser[]
+  category            Category[]
+  discussion_reaction Discussion_reaction[]
+  discussion_report   Discussion_report[]
+  User                User[]
+
+  user           User   @relation(fields: [subject_author], references: [id])
+  subject_author String
+
+  user2      User   @relation(fields: [created_by], references: [id])
+  created_by String
+
+  room    Room @relation(fields: [room_id], references: [id])
+  room_id Int
+}
+
+enum status {
+  ARCHIVED
+  ACTIVE
+}
