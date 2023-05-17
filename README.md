@@ -1,5 +1,7 @@
 # Nickel App
 
+![thumbnail](https://github.com/meritabrilhante/nickel-app/assets/52331000/2a30dc71-73f7-404b-a84f-fd2435787071)
+
 ## Overview
 
 Web application for literary works discussions. Developed in collaboration with @OpKSpatY as a conclusion project for the Internet Systems Technology course at the Federal Institute of Brasília.
