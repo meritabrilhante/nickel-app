@@ -101,3 +101,12 @@ enum visibility {
   PUBLIC
   PRIVATE
 }
+
+model Category {
+  id          String  @id @default(uuid())
+  name        String  @unique
+  description String?
+
+  //discussion Discussion[]
+  //room       Room[]
+}
