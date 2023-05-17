@@ -23,7 +23,7 @@ model User {
   institute      String?
   course         String?
   user_type      String?
-  user_situation userSituation
+  user_situation UserSituation
   description    String?
 
   //tokens       Token[]
@@ -35,7 +35,7 @@ model User {
   //user_emblems User_emblems[]
 }
 
-enum userSituation {
+enum UserSituation {
   USER
   ADMIN
 }
@@ -83,7 +83,7 @@ model Room {
   title       String
   description String
   institute   String
-  visibility  visibility
+  visibility  Visibility
   password    String?
   createdAt   DateTime   @default(now())
 
@@ -97,7 +97,7 @@ model Room {
   //category Int
 }
 
-enum visibility {
+enum Visibility {
   PUBLIC
   PRIVATE
 }
@@ -109,4 +109,34 @@ model Category {
 
   //discussion Discussion[]
   //room       Room[]
+}
+
+model Discussion {
+  id                   String   @id @default(uuid())
+  title                String
+  subject              String?
+  question_description String?
+  createdAt            DateTime @default(now())
+  belong_in_room       Int
+  status               Status
+
+  //awnser              Awnser[]
+  //category            Category[]
+  //discussion_reaction Discussion_reaction[]
+  //discussion_report   Discussion_report[]
+  //User                User[]
+
+  //user           User   @relation(fields: [subject_author], references: [id])
+  //subject_author String
+
+  //user2      User   @relation(fields: [created_by], references: [id])
+  //created_by String
+
+  //room    Room @relation(fields: [room_id], references: [id])
+  //room_id Int
+}
+
+enum Status {
+  ARCHIVED
+  ACTIVE
 }
