@@ -32,6 +32,8 @@ model User {
   room_users          Room_users[]
   room_manager        Room_manager[]
   room_report         Room_report[]
+  room_inviter        Room_invite[]         @relation("userId")
+  room_invited        Room_invite[]         @relation("guestId")
   awnser              Awnser[]
   awnser_reaction     Awnser_reaction[]
   discussion          Discussion[]
@@ -113,11 +115,25 @@ model Room {
   room_manager Room_manager[]
   room_report  Room_report[]
   room_users   Room_users[]
+  room_invite  Room_invite[]
 
   user        User     @relation(fields: [creator], references: [id])
   creator     String
   category    Category @relation(fields: [category_id], references: [id])
   category_id String
+}
+
+model Room_invite {
+  id String @id @default(uuid())
+
+  user   User   @relation("userId", fields: [userId], references: [id])
+  userId String
+
+  guest   User   @relation("guestId", fields: [guestId], references: [id])
+  guestId String
+
+  room   Room   @relation(fields: [roomId], references: [id])
+  roomId String
 }
 
 model Room_report {
