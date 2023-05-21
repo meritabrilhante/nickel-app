@@ -36,12 +36,29 @@ model User {
   discussion          Discussion[]
   discussion_reaction Discussion_reaction[]
   discussion_report   Discussion_report[]
-  //user_emblems        User_emblems[]
+  user_emblems        User_emblems[]
 }
 
 enum UserSituation {
   USER
   ADMIN
+}
+
+model User_emblems {
+  id            String        @id @default(uuid())
+  aquisitionAt  DateTime      @default(now())
+  showInProfile showInProfile
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  emblem   Emblem @relation(fields: [emblemId], references: [id])
+  emblemId String
+}
+
+enum showInProfile {
+  YES
+  NO
 }
 
 model Session {
@@ -55,8 +72,8 @@ model Session {
   publicData         String?
   privateData        String?
 
-  user   User?   @relation(fields: [userId], references: [id])
-  userId String?
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
 }
 
 model Token {
@@ -191,6 +208,8 @@ model Emblem {
   description String?
   createdAt   DateTime? @default(now())
   extinctAt   DateTime
+
+  user_emblems User_emblems[]
 }
 
 model Awnser {
