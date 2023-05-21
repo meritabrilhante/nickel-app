@@ -26,12 +26,13 @@ model User {
   user_situation UserSituation
   description    String?
 
-  token      Token[]
-  session    Session[]
-  rooms      Room[]
+  token               Token[]
+  session             Session[]
+  rooms               Room[]
   //room_user    Room_user[]
-  awnser     Awnser[]
-  discussion Discussion[]
+  awnser              Awnser[]
+  discussion          Discussion[]
+  discussion_reaction Discussion_reaction[]
   //user_emblems User_emblems[]
 }
 
@@ -121,9 +122,9 @@ model Discussion {
   belong_in_room       Int
   status               Status
 
-  awnser   Awnser[]
-  category Category[]
-  //discussion_reaction Discussion_reaction[]
+  awnser              Awnser[]
+  category            Category[]
+  discussion_reaction Discussion_reaction[]
   //discussion_report   Discussion_report[]
 
   // Avaliar necessidade de 'subject_author'
@@ -161,4 +162,20 @@ model Awnser {
 
   discussion   Discussion @relation(fields: [discussionId], references: [id])
   discussionId String
+}
+
+model Discussion_reaction {
+  id           String        @id @default(uuid())
+  reactionType Reaction_type
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  discussion   Discussion @relation(fields: [discussionId], references: [id])
+  discussionId String
+}
+
+enum Reaction_type {
+  LIKE
+  DESLIKE
 }
