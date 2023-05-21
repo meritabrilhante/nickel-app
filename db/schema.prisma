@@ -31,11 +31,12 @@ model User {
   rooms               Room[]
   room_users          Room_users[]
   room_manager        Room_manager[]
+  room_report         Room_report[]
   awnser              Awnser[]
   discussion          Discussion[]
   discussion_reaction Discussion_reaction[]
   discussion_report   Discussion_report[]
-  //user_emblems User_emblems[]
+  //user_emblems        User_emblems[]
 }
 
 enum UserSituation {
@@ -92,13 +93,25 @@ model Room {
 
   discussion   Discussion[]
   room_manager Room_manager[]
-  //room_report  Room_report[]
+  room_report  Room_report[]
   room_users   Room_users[]
 
   user        User     @relation(fields: [creator], references: [id])
   creator     String
   category    Category @relation(fields: [category_id], references: [id])
   category_id String
+}
+
+model Room_report {
+  id          String      @id @default(uuid())
+  report_type Report_type
+  comment     String?
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  room   Room   @relation(fields: [roomId], references: [id])
+  roomId String
 }
 
 model Room_manager {
