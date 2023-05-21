@@ -33,6 +33,7 @@ model User {
   awnser              Awnser[]
   discussion          Discussion[]
   discussion_reaction Discussion_reaction[]
+  discussion_report   Discussion_report[]
   //user_emblems User_emblems[]
 }
 
@@ -125,7 +126,7 @@ model Discussion {
   awnser              Awnser[]
   category            Category[]
   discussion_reaction Discussion_reaction[]
-  //discussion_report   Discussion_report[]
+  discussion_report   Discussion_report[]
 
   // Avaliar necessidade de 'subject_author'
   //user           User   @relation(fields: [subject_author], references: [id], name: "author")
@@ -178,4 +179,22 @@ model Discussion_reaction {
 enum Reaction_type {
   LIKE
   DESLIKE
+}
+
+model Discussion_report {
+  id         String      @id @default(uuid())
+  reportType Report_type
+  comment    String?
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  discussion   Discussion @relation(fields: [discussionId], references: [id])
+  discussionId String
+}
+
+enum Report_type {
+  OFFENSIVE
+  TENDENTIOUS
+  SPAM
 }
