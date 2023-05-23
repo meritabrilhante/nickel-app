@@ -23,5 +23,8 @@ export const nickelColors = {
       pure: "#DC264C",
       dark: "#B01E3D",
     },
+    info: {
+      pure: "#885ee9",
+    },
   },
 }
