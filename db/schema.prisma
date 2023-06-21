@@ -13,93 +13,93 @@ generator client {
 // --------------------------------------
 
 model User {
-  id             String        @id @default(uuid())
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
-  first_name     String
-  last_name      String
-  email          String        @unique
-  password       String
-  institute      String?
-  course         String?
-  user_type      String?
-  user_situation UserSituation
-  description    String?
+  id          String   @id @default(uuid())
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  first_name  String
+  last_name   String
+  email       String   @unique
+  password    String
+  institution String?
+  course      String?
+  user_type   String?
+  user_role   UserRole
+  description String?
 
-  token               Token[]
-  session             Session[]
+  tokens              Token[]
+  sessions            Session[]
   rooms               Room[]
-  room_users          Room_users[]
-  room_manager        Room_manager[]
-  room_report         Room_report[]
-  room_inviter        Room_invite[]         @relation("userId")
-  room_invited        Room_invite[]         @relation("guestId")
-  awnser              Awnser[]
-  awnser_reaction     Awnser_reaction[]
-  discussion          Discussion[]
-  discussion_reaction Discussion_reaction[]
-  discussion_report   Discussion_report[]
-  user_emblems        User_emblems[]
+  room_users          RoomUser[]
+  room_manager        RoomManager[]
+  room_report         RoomReport[]
+  room_inviter        RoomInvite[]         @relation("inviterId")
+  room_invited        RoomInvite[]         @relation("guestId")
+  answers             Answer[]
+  answer_reaction     AnswerReaction[]
+  discussions         Discussion[]
+  discussion_reaction DiscussionReaction[]
+  discussion_report   DiscussionReport[]
+  user_emblems        UserEmblem[]
 }
 
-enum UserSituation {
+enum UserRole {
   USER
   ADMIN
 }
 
-model User_emblems {
-  id            String        @id @default(uuid())
-  aquisitionAt  DateTime      @default(now())
-  showInProfile showInProfile
+model UserEmblem {
+  id              String        @id @default(uuid())
+  acquisition_at  DateTime      @default(now())
+  show_in_profile ShowInProfile
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 
-  emblem   Emblem @relation(fields: [emblemId], references: [id])
-  emblemId String
+  emblem    Emblem @relation(fields: [emblem_id], references: [id])
+  emblem_id String
 }
 
-enum showInProfile {
+enum ShowInProfile {
   YES
   NO
 }
 
 model Session {
-  id                 String    @id @default(uuid())
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime  @updatedAt
-  expiresAt          DateTime?
-  handle             String    @unique
-  hashedSessionToken String?
-  antiCSRFToken      String?
-  publicData         String?
-  privateData        String?
+  id                   String    @id @default(uuid())
+  created_at           DateTime  @default(now())
+  updated_at           DateTime  @updatedAt
+  expires_at           DateTime?
+  handle               String    @unique
+  hashed_session_token String?
+  anti_csrf_token      String?
+  public_data          String?
+  private_data         String?
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 }
 
 model Token {
-  id          String   @id @default(uuid())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  hashedToken String
-  type        String
-  expiresAt   DateTime
-  sentTo      String
+  id           String   @id @default(uuid())
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  hashed_token String
+  type         String
+  expires_at   DateTime
+  sent_to      String
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 
-  @@unique([hashedToken, type])
+  @@unique([hashed_token, type])
 }
 
 model Report {
   id          String   @id @default(uuid())
   type        String
   description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }
 
 model Room {
@@ -109,70 +109,72 @@ model Room {
   institute   String
   visibility  Visibility
   password    String?
-  createdAt   DateTime   @default(now())
+  created_at  DateTime   @default(now())
 
-  discussion   Discussion[]
-  room_manager Room_manager[]
-  room_report  Room_report[]
-  room_users   Room_users[]
-  room_invite  Room_invite[]
+  discussions   Discussion[]
+  room_managers RoomManager[]
+  room_report   RoomReport[]
+  room_users    RoomUser[]
+  room_invite   RoomInvite[]
 
-  user        User     @relation(fields: [creator], references: [id])
-  creator     String
-  category    Category @relation(fields: [category_id], references: [id])
-  category_id String
+  user         User           @relation(fields: [creator_id], references: [id])
+  creator_id   String
+  category     Category       @relation(fields: [category_id], references: [id])
+  category_id  String
+  RoomCategory RoomCategory[]
 }
 
-model Room_invite {
+model RoomInvite {
   id String @id @default(uuid())
 
-  user   User   @relation("userId", fields: [userId], references: [id])
-  userId String
+  user       User   @relation("inviterId", fields: [inviter_id], references: [id])
+  inviter_id String
 
-  guest   User   @relation("guestId", fields: [guestId], references: [id])
-  guestId String
+  guest    User   @relation("guestId", fields: [guest_id], references: [id])
+  guest_id String
 
-  room   Room   @relation(fields: [roomId], references: [id])
-  roomId String
+  room    Room   @relation(fields: [room_id], references: [id])
+  room_id String
 }
 
-model Room_report {
-  id          String      @id @default(uuid())
-  report_type Report_type
+model RoomReport {
+  id          String     @id @default(uuid())
+  report_type ReportType
   comment     String?
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 
-  room   Room   @relation(fields: [roomId], references: [id])
-  roomId String
+  room    Room   @relation(fields: [room_id], references: [id])
+  room_id String
 }
 
-model Room_manager {
+model RoomManager {
   id   String @id @default(uuid())
   role Role
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 
-  room   Room   @relation(fields: [roomId], references: [id])
-  roomId String
+  room    Room   @relation(fields: [room_id], references: [id])
+  room_id String
 }
 
 enum Role {
   ADMIN
   SUPERADMIN
+  CREATOR
 }
 
-model Room_users {
-  id      String   @id @default(uuid())
-  entryAt DateTime @default(now())
+model RoomUser {
+  id           String   @id @default(uuid())
+  member_since DateTime @default(now())
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 
-  room   Room   @relation(fields: [roomId], references: [id])
-  roomId String
+  room    Room   @relation(fields: [room_id], references: [id])
+  room_id String
 }
 
 enum Visibility {
@@ -185,33 +187,34 @@ model Category {
   name        String  @unique
   description String?
 
-  discussion Discussion[]
-  room       Room[]
+  discussions        Discussion[]
+  rooms              Room[]
+  RoomCategory       RoomCategory[]
+  DiscussionCategory DiscussionCategory[]
 }
 
 model Discussion {
-  id                   String   @id @default(uuid())
-  title                String
-  subject              String?
-  question_description String?
-  createdAt            DateTime @default(now())
-  belong_in_room       Int
-  status               Status
+  id          String   @id @default(uuid())
+  title       String
+  subject     String
+  description String
+  status      Status
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now())
 
-  awnser              Awnser[]
-  category            Category[]
-  discussion_reaction Discussion_reaction[]
-  discussion_report   Discussion_report[]
-
-  // Avaliar necessidade de 'subject_author'
-  //user           User   @relation(fields: [subject_author], references: [id], name: "author")
-  //subject_author String
+  answers              Answer[]
+  discussion_reactions DiscussionReaction[]
+  discussion_reports   DiscussionReport[]
 
   user       User   @relation(fields: [created_by], references: [id])
   created_by String
 
   room    Room   @relation(fields: [room_id], references: [id])
   room_id String
+
+  category           Category             @relation(fields: [category_id], references: [id])
+  category_id        String
+  DiscussionCategory DiscussionCategory[]
 }
 
 enum Status {
@@ -223,69 +226,89 @@ model Emblem {
   id          String    @id @default(uuid())
   name        String?
   description String?
-  createdAt   DateTime? @default(now())
-  extinctAt   DateTime
+  created_at  DateTime? @default(now())
+  extinct_at  DateTime
 
-  user_emblems User_emblems[]
+  user_emblems UserEmblem[]
 }
 
-model Awnser {
+model Answer {
   id          String   @id @default(uuid())
   description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 
-  awnser_reaction Awnser_reaction[]
+  answer_reactions AnswerReaction[]
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 
-  discussion   Discussion @relation(fields: [discussionId], references: [id])
-  discussionId String
+  discussion    Discussion @relation(fields: [discussion_id], references: [id])
+  discussion_id String
 }
 
-model Awnser_reaction {
-  id           String        @id @default(uuid())
-  reactionType Reaction_type
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
+model AnswerReaction {
+  id            String       @id @default(uuid())
+  reaction_type ReactionType
+  created_at    DateTime     @default(now())
+  updated_at    DateTime     @updatedAt
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 
-  awnser   Awnser @relation(fields: [awnserId], references: [id])
-  awnserId String
+  answer    Answer @relation(fields: [answer_id], references: [id])
+  answer_id String
 }
 
-model Discussion_reaction {
-  id           String        @id @default(uuid())
-  reactionType Reaction_type
+model DiscussionReaction {
+  id            String       @id @default(uuid())
+  reaction_type ReactionType
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 
-  discussion   Discussion @relation(fields: [discussionId], references: [id])
-  discussionId String
+  discussion    Discussion @relation(fields: [discussion_id], references: [id])
+  discussion_id String
 }
 
-enum Reaction_type {
+enum ReactionType {
   LIKE
-  DESLIKE
+  DISLIKE
 }
 
-model Discussion_report {
-  id         String      @id @default(uuid())
-  reportType Report_type
-  comment    String?
+model DiscussionReport {
+  id          String     @id @default(uuid())
+  report_type ReportType
+  comment     String?
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 
-  discussion   Discussion @relation(fields: [discussionId], references: [id])
-  discussionId String
+  discussion    Discussion @relation(fields: [discussion_id], references: [id])
+  discussion_id String
 }
 
-enum Report_type {
+model DiscussionCategory {
+  id String @id @default(uuid())
+
+  discussion    Discussion @relation(fields: [discussion_id], references: [id])
+  discussion_id String
+
+  category    Category @relation(fields: [category_id], references: [id])
+  category_id String
+}
+
+model RoomCategory {
+  id String @id @default(uuid())
+
+  room    Room   @relation(fields: [room_id], references: [id])
+  room_id String
+
+  category    Category @relation(fields: [category_id], references: [id])
+  category_id String
+}
+
+enum ReportType {
   OFFENSIVE
   TENDENTIOUS
   SPAM
