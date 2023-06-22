@@ -5,6 +5,11 @@ import Head from "next/head"
 import Button from "../atoms/button/Button.component"
 import { TitleHeader } from "../atoms/title-header"
 import { CircleNotificationsTwoTone, Close, CloseOutlined } from "@mui/icons-material"
+import { useCurrentUser } from "src/users/hooks/useCurrentUser"
+import { useMutation } from "@blitzjs/rpc"
+import logout from "src/auth/mutations/logout"
+import Link from "next/link"
+import { Routes, BlitzPage } from "@blitzjs/next"
 
 /**
  * Interface that defines the properties for the HeaderContainer component
@@ -44,6 +49,41 @@ interface MainLayoutProps {
  * @param {HeaderProps} props
  */
 
+const UserInfo = () => {
+  const currentUser = useCurrentUser()
+  const [logoutMutation] = useMutation(logout)
+
+  if (!currentUser) {
+    return (
+      <>
+        <button
+          onClick={async () => {
+            await logoutMutation()
+          }}
+        >
+          Logout
+        </button>
+        <div>
+          User id: <code>{currentUser.id}</code>
+          <br />
+          User name: <code>{currentUser.first_name}</code>
+        </div>
+      </>
+    )
+  } else {
+    return (
+      <>
+        <Link href={Routes.SignupPage()}>
+          <strong>Sign Up</strong>
+        </Link>
+        <Link href={Routes.LoginPage()}>
+          <strong>Login</strong>
+        </Link>
+      </>
+    )
+  }
+}
+
 const MainLayout = ({ children, width }: MainLayoutProps) => {
   return (
     <MainLayoutContainer width={width}>
@@ -63,6 +103,11 @@ const MainLayout = ({ children, width }: MainLayoutProps) => {
         }
         description="Lorem ipsum is a simply dumb text"
       />
+
+      <div>
+        <p>Teste</p>
+      </div>
+
       <Footer width={"100%"} />
     </MainLayoutContainer>
   )
