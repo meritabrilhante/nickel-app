@@ -92,6 +92,9 @@ const muiLightTheme = createTheme({
       main: nickelTheme.tokens.colors.systemColors.error.pure,
       dark: nickelTheme.tokens.colors.systemColors.error.dark,
     },
+    info: {
+      main: nickelTheme.tokens.colors.systemColors.info.pure,
+    },
   },
 
   components: {
