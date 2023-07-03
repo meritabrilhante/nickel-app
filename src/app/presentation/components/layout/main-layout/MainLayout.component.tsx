@@ -10,6 +10,8 @@ import { useMutation } from "@blitzjs/rpc"
 import logout from "src/auth/mutations/logout"
 import Link from "next/link"
 import { Routes, BlitzPage } from "@blitzjs/next"
+import { useRouter } from "next/router"
+import React, { useEffect } from "react"
 
 /**
  * Interface that defines the properties for the HeaderContainer component
@@ -50,41 +52,31 @@ interface MainLayoutProps {
  */
 
 const UserInfo = () => {
-  const currentUser = useCurrentUser()
-  const [logoutMutation] = useMutation(logout)
-
-  if (!currentUser) {
-    return (
-      <>
-        <button
-          onClick={async () => {
-            await logoutMutation()
-          }}
-        >
-          Logout
-        </button>
-        <div>
-          User id Teste: <code>{currentUser.id}</code>
-          <br />
-          User name: <code>{currentUser.first_name}</code>
-        </div>
-      </>
-    )
-  } else {
-    return (
-      <>
-        <Link href={Routes.SignupPage()}>
-          <strong>Sign Up</strong>
-        </Link>
-        <Link href={Routes.LoginPage()}>
-          <strong>Login</strong>
-        </Link>
-      </>
-    )
-  }
+  return (
+    <>
+      <Link href={Routes.SignupPage()}>
+        <strong>Sign Up</strong>
+      </Link>
+      <Link href={Routes.LoginPage()}>
+        <strong>Login</strong>
+      </Link>
+    </>
+  )
 }
 
 const MainLayout = ({ children, width }: MainLayoutProps) => {
+  const router = useRouter()
+
+  useEffect(() => {
+    // Verificar se o usuário está logado
+    const isLoggedIn = true // Coloque aqui a lógica para verificar se o usuário está logado
+
+    // Se o usuário não estiver logado, redirecionar para outra página
+    if (isLoggedIn) {
+      router.push("/auth/signup") // Coloque aqui o caminho da página para onde deseja redirecionar
+    }
+  }, []) // A dependência vazia indica que o efeito será executado apenas uma vez, no momento da montagem do componente
+
   return (
     <MainLayoutContainer width={width}>
       <Head>
@@ -104,9 +96,7 @@ const MainLayout = ({ children, width }: MainLayoutProps) => {
         description="Lorem ipsum is a simply dumb text"
       />
 
-      <div>
-        <p>Teste</p>
-      </div>
+      <UserInfo />
 
       <Footer width={"100%"} />
     </MainLayoutContainer>
