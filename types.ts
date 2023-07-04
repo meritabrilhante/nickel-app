@@ -8,7 +8,6 @@ declare module "@blitzjs/auth" {
     isAuthorized: SimpleRolesIsAuthorized<Role>
     PublicData: {
       userId: User["id"]
-      role: Role
     }
   }
 }

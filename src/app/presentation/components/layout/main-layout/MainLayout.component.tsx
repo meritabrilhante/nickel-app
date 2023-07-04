@@ -12,6 +12,7 @@ import Link from "next/link"
 import { Routes, BlitzPage } from "@blitzjs/next"
 import { useRouter } from "next/router"
 import React, { useEffect } from "react"
+import { Ctx } from "blitz"
 
 /**
  * Interface that defines the properties for the HeaderContainer component
@@ -69,11 +70,11 @@ const MainLayout = ({ children, width }: MainLayoutProps) => {
 
   useEffect(() => {
     // Verificar se o usuário está logado
-    const isLoggedIn = true // Coloque aqui a lógica para verificar se o usuário está logado
+    const isLoggedIn = true // Lógica para verificar se o usuário está logado
 
     // Se o usuário não estiver logado, redirecionar para outra página
     if (isLoggedIn) {
-      router.push("/auth/signup") // Coloque aqui o caminho da página para onde deseja redirecionar
+      router.push("/auth/login") // Coloque aqui o caminho da página para onde deseja redirecionar
     }
   }, []) // A dependência vazia indica que o efeito será executado apenas uma vez, no momento da montagem do componente
 
