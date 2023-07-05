@@ -10,15 +10,15 @@ export const authenticateUser = async (rawEmail: string, rawPassword: string) =>
   const user = await db.user.findFirst({ where: { email } })
   if (!user) throw new AuthenticationError()
 
-  const result = await SecurePassword.verify(user.hashedPassword, password)
+  const result = await SecurePassword.verify(user.password, password)
 
-  if (result === SecurePassword.VALID_NEEDS_REHASH) {
-    // Upgrade hashed password with a more secure hash
-    const improvedHash = await SecurePassword.hash(password)
-    await db.user.update({ where: { id: user.id }, data: { hashedPassword: improvedHash } })
-  }
+  //if (result === SecurePassword.VALID_NEEDS_REHASH) {
+  // Upgrade hashed password with a more secure hash
+  //  const improvedHash = await SecurePassword.hash(password)
+  //  await db.user.update({ where: { id: user.id }, data: { password: improvedHash } })
+  // }
 
-  const { hashedPassword, ...rest } = user
+  const { ...rest } = user
   return rest
 }
 
@@ -26,7 +26,7 @@ export default resolver.pipe(resolver.zod(Login), async ({ email, password }, ct
   // This throws an error if credentials are invalid
   const user = await authenticateUser(email, password)
 
-  await ctx.session.$create({ userId: user.id, role: user.role as Role})
+  await ctx.session.$create({ userId: user.id })
 
   return user
 })
