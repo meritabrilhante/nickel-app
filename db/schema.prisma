@@ -14,8 +14,8 @@ generator client {
 
 model User {
   id          String   @id @default(uuid())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
   first_name  String
   last_name   String
   email       String   @unique
@@ -23,4 +23,5 @@ model User {
   institute   String?
   course      String?
   description String?
+  role        String
 }

@@ -6,30 +6,30 @@ import {
   InputLabel,
   Stack,
   styled,
-} from "@mui/material"
+} from "@mui/material";
 
 const InputContainer = styled(Box)(({ height }: InputContainerProps) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
   height: height,
-}))
+}));
 
 interface InputContainerProps {
-  height: string
+  height: string;
 }
 
-interface InputProps {
-  height?: string
-  children?: React.ReactNode
-  label?: string
-  message?: string
-  placeholder?: string
-  width?: string
-  state?: InputState
+interface InputProps extends React.HTMLProps<HTMLButtonElement> {
+  height?: string;
+  children?: React.ReactNode;
+  label?: string;
+  message?: string;
+  placeholder?: string;
+  width?: string;
+  state?: InputState;
 }
 
-export type InputState = "error" | "sucess" | "disabled"
+export type InputState = "error" | "sucess" | "disabled";
 
 const Input = ({ children, label, message, placeholder }: InputProps) => {
   return (
@@ -50,7 +50,7 @@ const Input = ({ children, label, message, placeholder }: InputProps) => {
         <p style={{ fontSize: "0.875rem" }}>{message}</p>
       </Stack>
     </InputContainer>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;
