@@ -1,21 +1,38 @@
-import { BlitzPage } from "@blitzjs/next"
-import Layout from "src/core/layouts/Layout"
-import { LoginForm } from "src/auth/components/LoginForm"
-import { useRouter } from "next/router"
+import { useRouter } from "next/router";
+import { Box, Stack, styled } from "@mui/material";
+import { Button } from "@/app/presentation/components/layout/atoms/button";
+import SimpleLayout from "@/app/presentation/components/layout/simpleLayout/SimpleLayout.component";
+import { LoginForm } from "@/core/components/LoginForm";
 
-const LoginPage: BlitzPage = () => {
-  const router = useRouter()
+const LoginContainer = styled(Box)(() => ({
+  width: "50%",
+  display: "flex",
+  flexDirection: "column",
+  margin: "auto 0",
+}));
+
+const LoginPage = () => {
+  const router = useRouter();
 
   return (
-    <Layout title="Log In">
-      <LoginForm
-        onSuccess={(_user) => {
-          const next = router.query.next ? decodeURIComponent(router.query.next as string) : "/"
-          return router.push(next)
-        }}
-      />
-    </Layout>
-  )
-}
+    <SimpleLayout width={"100%"}>
+      <LoginContainer>
+        <p>Nickel App</p>
+        <h1>Faça o Login</h1>
 
-export default LoginPage
+        <Stack spacing={1}>
+          <LoginForm />
+        </Stack>
+
+        <Stack spacing={2}>
+          <Button buttonClass={"primary"}>Entrar</Button>
+          <p>
+            Ainda não tem uma conta?<a>Crie uma conta</a>
+          </p>
+        </Stack>
+      </LoginContainer>
+    </SimpleLayout>
+  );
+};
+
+export default LoginPage;
