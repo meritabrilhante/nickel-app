@@ -5,6 +5,10 @@ export const email = z
   .email()
   .transform((str) => str.toLowerCase().trim())
 
+export const first_name = z.string()
+
+export const last_name = z.string()
+
 export const password = z
   .string()
   .min(10)
@@ -14,6 +18,8 @@ export const password = z
 export const Signup = z.object({
   email,
   password,
+  first_name,
+  last_name,
 })
 
 export const Login = z.object({

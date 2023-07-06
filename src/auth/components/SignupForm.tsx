@@ -34,6 +34,8 @@ export const SignupForm = (props: SignupFormProps) => {
       >
         <LabeledTextField name="email" label="Email" placeholder="Email" />
         <LabeledTextField name="password" label="Password" placeholder="Password" type="password" />
+        <LabeledTextField name="first_name" label="First name" placeholder="Primeiro nome" />
+        <LabeledTextField name="last_name" label="Last name" placeholder="Segundo nome" />
       </Form>
     </div>
   )
