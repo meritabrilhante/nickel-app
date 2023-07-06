@@ -15,6 +15,7 @@ import { CircleNotificationsTwoTone, Close, CloseOutlined } from "@mui/icons-mat
 
 interface MainLayoutContainerProps extends BoxProps {
   width: string;
+  pageTitle: string;
 }
 
 const MainLayoutContainer = styled(Box)(({ width }: MainLayoutContainerProps) => ({
@@ -35,6 +36,7 @@ const MainLayoutContainer = styled(Box)(({ width }: MainLayoutContainerProps) =>
 interface MainLayoutProps {
   children: React.ReactNode;
   width: string;
+  pageTitle: string;
 }
 
 /**
@@ -44,11 +46,11 @@ interface MainLayoutProps {
  * @param {HeaderProps} props
  */
 
-const MainLayout = ({ children, width }: MainLayoutProps) => {
+const MainLayout = ({ children, width, pageTitle }: MainLayoutProps) => {
   return (
-    <MainLayoutContainer width={width}>
+    <MainLayoutContainer width={width} pageTitle={pageTitle}>
       <Head>
-        <title>Nickel App | Home</title>
+        <title>Nickel App | {pageTitle}</title>
       </Head>
 
       <Header width={width} />

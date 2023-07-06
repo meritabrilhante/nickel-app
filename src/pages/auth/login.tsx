@@ -15,7 +15,7 @@ const LoginPage = () => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push("/auth/signup");
+    router.push("/home");
   };
 
   return (
