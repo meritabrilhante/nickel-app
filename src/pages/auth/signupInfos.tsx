@@ -2,7 +2,7 @@ import { useRouter } from "next/router"
 import { Box, Stack, styled } from "@mui/material"
 import { Button } from "@/app/presentation/components/layout/atoms/button"
 import SimpleLayout from "@/app/presentation/components/layout/simpleLayout/SimpleLayout.component"
-import { LoginForm } from "@/core/components/LoginForm"
+import { SignupInfosForm } from "@/core/components/SignupInfosForm"
 
 const SignupContainer = styled(Box)(() => ({
   width: "50%",
@@ -14,33 +14,31 @@ const SignupContainer = styled(Box)(() => ({
 const SignupPage = () => {
   const router = useRouter()
 
-  const handleClick = () => {
-    router.push("/auth/signupInfos")
+  const handleGoBack = () => {
+    router.push("/auth/signup")
+  }
+
+  const handleGoOn = () => {
+    router.push("/auth/wellcome")
   }
 
   return (
     <SimpleLayout width={"100%"}>
       <SignupContainer>
         <p>Nickel App</p>
-        <h1>Cadastre-se</h1>
+        <h1>Informações</h1>
 
         <Stack spacing={1}>
-          <LoginForm />
+          <SignupInfosForm />
         </Stack>
 
-        <Stack spacing={2}>
-          <Button buttonClass={"primary"} onClick={handleClick}>
-            Criar conta
+        <Stack style={{ gap: "10px" }}>
+          <Button buttonClass={"primary"} onClick={handleGoBack}>
+            Voltar
           </Button>
-          <p>
-            Já tem uma conta?{" "}
-            <a
-              href="/auth/login"
-              style={{ color: "var(--color-primary-pure)", textDecoration: "none" }}
-            >
-              Faça o login
-            </a>
-          </p>
+          <Button buttonClass={"primary"} onClick={handleGoOn}>
+            Continuar
+          </Button>
         </Stack>
       </SignupContainer>
     </SimpleLayout>
