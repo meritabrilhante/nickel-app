@@ -32,12 +32,22 @@ const SignupPage = () => {
           <SignupInfosForm />
         </Stack>
 
-        <Stack style={{ gap: "10px" }}>
-          <Button buttonClass={"primary"} onClick={handleGoBack}>
-            Voltar
-          </Button>
+        <Stack
+          style={{
+            gap: "10px",
+            display: "flex",
+            alignContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            margin: "0 auto",
+            width: "50%",
+          }}
+        >
           <Button buttonClass={"primary"} onClick={handleGoOn}>
             Continuar
+          </Button>
+          <Button buttonClass={"tertiary"} onClick={handleGoBack}>
+            Voltar
           </Button>
         </Stack>
       </SignupContainer>

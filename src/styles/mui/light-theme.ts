@@ -127,7 +127,7 @@ const muiLightTheme = createTheme({
           borderRadius: "8px",
           backgroundColor: "var(--color-secondary)",
           fontFamily: "var(--font-family-base)",
-          height: "2.5rem",
+          height: "2.8rem",
           color: "var(--color-light)",
           padding: "1rem",
           "&.Mui-focused": {

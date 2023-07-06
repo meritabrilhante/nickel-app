@@ -12,10 +12,14 @@ const SimpleLayoutContainer = styled(Box)(() => ({
 export const SignupInfosForm = () => {
   return (
     <SimpleLayoutContainer>
-      <Input label={"Nome* (obrigatório)"} placeholder="Ex.: John" />
-      <Input label={"Sobrenome* (obrigatório)"} placeholder="Ex.: Doe" />
-      <Input label={"Intituição* (opcional)"} placeholder="Ex.: IFB" />
-      <Input label={"Curso* (opcional)"} placeholder="Ex.: Letras" />
+      <div style={{ display: "flex", width: "100%", gap: "10px" }}>
+        <Input label={"Nome* (obrigatório)"} placeholder="Ex.: John" />
+        <Input label={"Sobrenome* (obrigatório)"} placeholder="Ex.: Doe" />
+      </div>
+      <div style={{ display: "flex", width: "100%", gap: "10px" }}>
+        <Input label={"Intituição* (opcional)"} placeholder="Ex.: IFB" />
+        <Input label={"Curso* (opcional)"} placeholder="Ex.: Letras" />
+      </div>
       <Input label={"Você é?* (obrigatório)"} placeholder="Ex.: Estudante" />
     </SimpleLayoutContainer>
   )
