@@ -14,20 +14,25 @@ const LoginContainer = styled(Box)(() => ({
 const LoginPage = () => {
   const router = useRouter();
 
+  const handleClick = () => {
+    router.push("/home");
+  };
+
   return (
     <SimpleLayout width={"100%"}>
       <LoginContainer>
         <p>Nickel App</p>
         <h1>Faça o Login</h1>
 
-        <Stack spacing={1}>
-          <LoginForm />
-        </Stack>
+        <LoginForm />
 
         <Stack spacing={2}>
-          <Button buttonClass={"primary"}>Entrar</Button>
+          <Button onClick={handleClick} buttonClass={"primary"}>
+            Entrar
+          </Button>
           <p>
-            Ainda não tem uma conta?<a>Crie uma conta</a>
+            Ainda não tem uma conta?
+            <a style={{ color: "var(--color-primary-pure)", paddingLeft: "8px" }}>Crie uma conta</a>
           </p>
         </Stack>
       </LoginContainer>

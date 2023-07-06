@@ -5,8 +5,8 @@ const SimpleLayoutContainer = styled(Box)(() => ({
   display: "flex",
   gap: "40px",
   flexDirection: "column",
-  paddingTop: "80px",
   paddingBottom: "80px",
+  paddingTop: "40px",
 }));
 
 export const LoginForm = () => {
