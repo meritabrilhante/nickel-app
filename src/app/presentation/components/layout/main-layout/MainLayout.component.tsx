@@ -1,10 +1,10 @@
-import { Box, BoxProps, styled } from "@mui/material"
-import Footer from "@/app/presentation/components/layout/footer/Footer.component"
-import Header from "@/app/presentation/components/layout/header/Header.component"
-import Head from "next/head"
-import Button from "../atoms/button/Button.component"
-import { TitleHeader } from "../atoms/title-header"
-import { CircleNotificationsTwoTone, Close, CloseOutlined } from "@mui/icons-material"
+import { Box, BoxProps, styled } from "@mui/material";
+import Footer from "@/app/presentation/components/layout/footer/Footer.component";
+import Header from "@/app/presentation/components/layout/header/Header.component";
+import Head from "next/head";
+import Button from "../atoms/button/Button.component";
+import { TitleHeader } from "../atoms/title-header";
+import { CircleNotificationsTwoTone, Close, CloseOutlined } from "@mui/icons-material";
 
 /**
  * Interface that defines the properties for the HeaderContainer component
@@ -14,7 +14,7 @@ import { CircleNotificationsTwoTone, Close, CloseOutlined } from "@mui/icons-mat
  */
 
 interface MainLayoutContainerProps extends BoxProps {
-  width: string
+  width: string;
 }
 
 const MainLayoutContainer = styled(Box)(({ width }: MainLayoutContainerProps) => ({
@@ -23,7 +23,7 @@ const MainLayoutContainer = styled(Box)(({ width }: MainLayoutContainerProps) =>
   justifyContent: "space-between",
   flexDirection: "column",
   height: "100vh",
-}))
+}));
 
 /**
  * Interface that defines the properties for the Header component
@@ -33,8 +33,8 @@ const MainLayoutContainer = styled(Box)(({ width }: MainLayoutContainerProps) =>
  */
 
 interface MainLayoutProps {
-  children: React.ReactNode
-  width: string
+  children: React.ReactNode;
+  width: string;
 }
 
 /**
@@ -63,9 +63,10 @@ const MainLayout = ({ children, width }: MainLayoutProps) => {
         }
         description="Lorem ipsum is a simply dumb text"
       />
+
       <Footer width={"100%"} />
     </MainLayoutContainer>
-  )
-}
+  );
+};
 
-export default MainLayout
+export default MainLayout;
