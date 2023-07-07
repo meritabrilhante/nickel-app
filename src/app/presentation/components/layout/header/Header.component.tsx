@@ -1,12 +1,12 @@
-import { Box, BoxProps, Button, Link, styled, Stack } from "@mui/material"
-import SearchComponent from "@/core/components/search/Search.component"
-import { UserMenu } from "../atoms/user-menu"
-import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard"
-import MeetingRoomIcon from "@mui/icons-material/MeetingRoom"
-import LocalCafeIcon from "@mui/icons-material/LocalCafe"
+import { Box, BoxProps, Button, Link, styled, Stack } from "@mui/material";
+import SearchComponent from "@/core/components/search/Search.component";
+import { UserMenu } from "../atoms/user-menu";
+import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
+import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
+import LocalCafeIcon from "@mui/icons-material/LocalCafe";
 
 interface HeaderContainerProps extends BoxProps {
-  width: string
+  width: string;
 }
 
 const FullHeaderContainer = styled(Box)(({ width }: HeaderContainerProps) => ({
@@ -14,7 +14,8 @@ const FullHeaderContainer = styled(Box)(({ width }: HeaderContainerProps) => ({
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
-}))
+  marginBottom: "40px",
+}));
 
 const UpHeaderContainer = styled(Box)(({ width }: UpHeaderContainerProps) => ({
   display: "flex",
@@ -25,7 +26,7 @@ const UpHeaderContainer = styled(Box)(({ width }: UpHeaderContainerProps) => ({
   width: "100%",
   fontWeight: "var(--font-weight-medium)",
   backgroundColor: "var(--color-primary-pure)",
-}))
+}));
 
 const SubHeaderContainer = styled(Box)(() => ({
   display: "flex",
@@ -35,7 +36,7 @@ const SubHeaderContainer = styled(Box)(() => ({
   backgroundColor: "var(--color-tertiary)",
   padding: "0.8rem",
   width: "100%",
-}))
+}));
 
 const MidHeaderContainer = styled(Box)(({ width }: UpHeaderContainerProps) => ({
   display: "flex",
@@ -44,14 +45,14 @@ const MidHeaderContainer = styled(Box)(({ width }: UpHeaderContainerProps) => ({
   padding: "0.8rem 10rem",
   width: "100%",
   backgroundColor: "var(--color-tertiary)",
-}))
+}));
 
 interface FullHeaderProps {
-  width: string
+  width: string;
 }
 
 interface UpHeaderContainerProps {
-  width: string
+  width: string;
 }
 
 const styles = {
@@ -59,7 +60,7 @@ const styles = {
     fontFamily: "var(--font-family-base)",
     backgroundColor: "transparent",
   },
-}
+};
 
 const Header = ({ width }: FullHeaderProps) => {
   return (
@@ -97,7 +98,7 @@ const Header = ({ width }: FullHeaderProps) => {
         </Stack>
       </SubHeaderContainer>
     </FullHeaderContainer>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

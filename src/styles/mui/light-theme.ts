@@ -108,7 +108,7 @@ const muiLightTheme = createTheme({
         root: {
           fontFamily: "var(--font-family-primary)",
           lineHeight: "var(--line-height-sm)",
-          fontWeight: "var(--font-weight-m)",
+          letterSpacing: "0.5px",
           fontSize: "var(--font-size-xs)",
           textAlign: "center",
           textTransform: "none",

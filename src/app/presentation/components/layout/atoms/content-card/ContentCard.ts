@@ -1,5 +1,4 @@
 import { Box, styled } from "@mui/material";
-import { ContentCardProps } from "./ContentCard.component";
 
 export const ContentCardContainer = styled(Box)(() => ({
   display: "flex",
@@ -10,6 +9,7 @@ export const ContentCardContainer = styled(Box)(() => ({
   backgroundColor: "var(--color-tertiary)",
   padding: "32px",
   borderRadius: "var(--border-radius-default)",
+  marginBottom: "40px",
 }));
 
 export const ContentCardHeaderContainer = styled(Box)(() => ({

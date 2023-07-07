@@ -1,7 +1,8 @@
-import { Box, BoxProps, styled } from "@mui/material";
+import { Box, BoxProps, Button, Stack, styled } from "@mui/material";
 import Footer from "@/app/presentation/components/layout/footer/Footer.component";
 import Header from "@/app/presentation/components/layout/header/Header.component";
 import Head from "next/head";
+import { TextIcon } from "../atoms/text-icon";
 
 /**
  * Interface that defines the properties for the HeaderContainer component
@@ -52,6 +53,23 @@ const MainLayout = ({ children, width, pageTitle }: MainLayoutProps) => {
 
       <Header width={width} />
       {children}
+
+      <Button
+        style={{
+          zIndex: "999",
+          position: "fixed",
+          right: "calc(100vw - 95%)",
+          bottom: "calc(100vh - 95%)",
+          height: "56px",
+          width: "fit-content",
+          padding: "0 24px",
+          fontSize: "18px",
+          fontWeight: "600",
+          borderRadius: "8px 8px 0 8px",
+        }}
+      >
+        <TextIcon iconName={"FiPlus"} text={"Nova Discussão"} iconPosition={"left"} />
+      </Button>
 
       <Footer width={"100%"} />
     </MainLayoutContainer>
