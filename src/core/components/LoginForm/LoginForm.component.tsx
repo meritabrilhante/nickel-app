@@ -12,8 +12,12 @@ const SimpleLayoutContainer = styled(Box)(() => ({
 export const LoginForm = () => {
   return (
     <SimpleLayoutContainer>
-      <Input label={"E-mail* (obrigatório)"} />
-      <Input label={"Senha* (obrigatório)"} message={"A senha deve ter no mínimo 8 caracteres"} />
+      <Input label={"E-mail* (obrigatório)"} placeholder={"Digite seu e-mail"} />
+      <Input
+        label={"Senha* (obrigatório)"}
+        placeholder={"*********"}
+        message={"A senha deve ter no mínimo 8 caracteres"}
+      />
     </SimpleLayoutContainer>
   );
 };
