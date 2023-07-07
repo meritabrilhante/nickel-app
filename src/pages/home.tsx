@@ -29,7 +29,7 @@ export const HomePage = () => {
 
         <ContentHeader date={"24/07/2023"} />
 
-        <ContentCard />
+        <ContentCard type={"room"} />
       </HomeContainer>
     </MainLayout>
   );

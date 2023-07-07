@@ -6,7 +6,7 @@ const ContentCardContainer = styled(Box)(() => ({
   alignItems: "center",
   flexDirection: "row",
   gap: "4px",
-  width: "100%",
+  width: "fit-content",
 }));
 
 interface TextIconPropns {
