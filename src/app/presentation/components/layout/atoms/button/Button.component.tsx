@@ -10,7 +10,6 @@ interface ButtonComponentProps extends ButtonProps {
   size?: ButtonSize;
   children?: React.ReactNode;
   buttonClass: ButtonClass;
-  width?: string;
 }
 
 const PrimaryButton = styled(Button)(() => ({
@@ -37,7 +36,8 @@ const TertiaryButton = styled(Button)(() => ({
   fontFamily: "var(--font-family-base)",
   backgroundColor: "transparent",
   "&:hover": {
-    backgroundColor: "var(--color-tertiary)",
+    backgroundColor: "transparent",
+    color: "var(--color-primary-pure)",
   },
 }));
 
@@ -47,10 +47,14 @@ const btnComponents = {
   tertiary: TertiaryButton,
 };
 
-const ButtonComponent = ({ children, buttonClass, onClick }: ButtonComponentProps) => {
+const ButtonComponent = ({ children, buttonClass, onClick, size }: ButtonComponentProps) => {
   const BtnComponent = btnComponents[buttonClass];
 
-  return <BtnComponent onClick={onClick}>{children}</BtnComponent>;
+  return (
+    <BtnComponent onClick={onClick} size={size}>
+      {children}
+    </BtnComponent>
+  );
 };
 
 export default ButtonComponent;
