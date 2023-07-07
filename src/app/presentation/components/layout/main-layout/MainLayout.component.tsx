@@ -2,9 +2,6 @@ import { Box, BoxProps, styled } from "@mui/material";
 import Footer from "@/app/presentation/components/layout/footer/Footer.component";
 import Header from "@/app/presentation/components/layout/header/Header.component";
 import Head from "next/head";
-import Button from "../atoms/button/Button.component";
-import { TitleHeader } from "../atoms/title-header";
-import { CircleNotificationsTwoTone, Close, CloseOutlined } from "@mui/icons-material";
 
 /**
  * Interface that defines the properties for the HeaderContainer component
@@ -55,16 +52,6 @@ const MainLayout = ({ children, width, pageTitle }: MainLayoutProps) => {
 
       <Header width={width} />
       {children}
-
-      <TitleHeader
-        title={"Title"}
-        button={
-          <Button buttonClass={"secondary"} size={"small"}>
-            <CloseOutlined />
-          </Button>
-        }
-        description="Lorem ipsum is a simply dumb text"
-      />
 
       <Footer width={"100%"} />
     </MainLayoutContainer>
