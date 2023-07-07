@@ -12,13 +12,23 @@ const ContentCardContainer = styled(Box)(() => ({
 interface TextIconPropns {
   iconName: string;
   text: string;
+  iconPosition: string;
 }
 
-export const TextIcon = ({ iconName, text }: TextIconPropns) => {
+export const TextIcon = ({ iconName, text, iconPosition }: TextIconPropns) => {
   return (
     <ContentCardContainer>
-      <Icon name={iconName} />
-      {text}
+      {iconPosition === "left" ? (
+        <>
+          <Icon name={iconName} />
+          {text}
+        </>
+      ) : (
+        <>
+          {text}
+          <Icon name={iconName} />
+        </>
+      )}
     </ContentCardContainer>
   );
 };

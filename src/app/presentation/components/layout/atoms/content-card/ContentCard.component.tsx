@@ -10,6 +10,9 @@ const ContentCardContainer = styled(Box)(() => ({
   height: "300px",
   width: "600px",
   justifyContent: "space-between",
+  backgroundColor: "var(--color-tertiary)",
+  padding: "32px",
+  borderRadius: "var(--border-radius-default)",
 }));
 
 const ContentCardHeaderContainer = styled(Box)(() => ({
@@ -23,7 +26,6 @@ const ContentCardTitleContainer = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   flexDirection: "row",
-  padding: "0 0 16px 0",
   justifyContent: "space-between",
 }));
 
@@ -31,8 +33,8 @@ export const ContentCard = () => {
   return (
     <ContentCardContainer>
       <ContentCardHeaderContainer>
-        <Badge mainColor={"#CC54C5"} borderRadius={"99px"} height={"40px"}>
-          <TextIcon iconName={"FiMusic"} text={"Música"} />
+        <Badge mainColor={"#CC54C5"} borderRadius={"99px"} height={"32px"}>
+          <TextIcon iconName={"FiMusic"} text={"Música"} iconPosition={"left"} />
         </Badge>
 
         <Button buttonClass={"secondary"}>
@@ -46,14 +48,19 @@ export const ContentCard = () => {
       </ContentCardTitleContainer>
 
       <Stack spacing={1}>
-        <TextIcon iconName={"FiBook"} text={"Book"} />
+        <TextIcon iconName={"FiBook"} text={"Book"} iconPosition={"left"} />
 
-        <TextIcon iconName={"FiFeather"} text={"Autor"} />
+        <TextIcon iconName={"FiFeather"} text={"Autor"} iconPosition={"left"} />
       </Stack>
 
-      <p>Lorem ipsum is a simply</p>
+      <p style={{ width: "fit-content" }}>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      </p>
 
-      <TextIcon iconName={"FiGlobe"} text={"Samba"} />
+      <TextIcon iconName={"FiGlobe"} text={"Samba"} iconPosition={"left"} />
+      <Button buttonClass={"tertiary"}>
+        <TextIcon iconName={"FiArrowRight"} text={"Ver discussão"} iconPosition={"right"} />
+      </Button>
     </ContentCardContainer>
   );
 };

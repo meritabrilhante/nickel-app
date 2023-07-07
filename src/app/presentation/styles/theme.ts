@@ -1,39 +1,39 @@
-import { nickelColors, NickelColors } from "./colors"
+import { nickelColors, NickelColors } from "./colors";
 
 /**
  * Type that defines the basis for the different types of token groups in the design system.
  * @type {{ [key in KeyType]: ValueType }}
  */
 
-export type TokenGroup<KeyType extends string, ValueType> = { [key in KeyType]: ValueType }
+export type TokenGroup<KeyType extends string, ValueType> = { [key in KeyType]: ValueType };
 
 /**
  * Type that defines the font family varieties.
  * @type {'primary' | 'base'}
  */
 
-export type NickelTokensFontFamily = "primary" | "base"
+export type NickelTokensFontFamily = "primary" | "base";
 
 /**
  * Type defining the varieties of line height.
  * @type {'sm' | 'md' | 'lg'}
  */
 
-export type NickelTokensLineHeight = "sm" | "md" | "lg"
+export type NickelTokensLineHeight = "sm" | "md" | "lg";
 
 /**
  * Type that defines the font weight varieties.
  * @type {'regular' | 'medium' | 'semiBold' | 'bold'}
  */
 
-export type NickelTokensFontWeight = "regular" | "medium" | "semiBold" | "bold"
+export type NickelTokensFontWeight = "regular" | "medium" | "semiBold" | "bold";
 
 /**
  * Type that defines the font size varieties.
  * @type {'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl'}
  */
 
-export type NickelTokensFontSize = "xs" | "s" | "m" | "l" | "xl" | "xxl"
+export type NickelTokensFontSize = "xs" | "s" | "m" | "l" | "xl" | "xxl";
 
 /**
  * Interface that represents the tokens of the design system.
@@ -46,11 +46,11 @@ export type NickelTokensFontSize = "xs" | "s" | "m" | "l" | "xl" | "xxl"
  */
 
 export interface NickelTokens {
-  fontFamily: TokenGroup<NickelTokensFontFamily, string>
-  lineHeight: TokenGroup<NickelTokensLineHeight, string>
-  fontWeight: TokenGroup<NickelTokensFontWeight, number>
-  fontSize: TokenGroup<NickelTokensFontSize, string>
-  colors: NickelColors
+  fontFamily: TokenGroup<NickelTokensFontFamily, string>;
+  lineHeight: TokenGroup<NickelTokensLineHeight, string>;
+  fontWeight: TokenGroup<NickelTokensFontWeight, number>;
+  fontSize: TokenGroup<NickelTokensFontSize, string>;
+  colors: NickelColors;
 }
 
 /**
@@ -60,7 +60,7 @@ export interface NickelTokens {
  */
 
 export interface NickelTheme {
-  tokens: NickelTokens
+  tokens: NickelTokens;
 }
 
 /**
@@ -80,7 +80,7 @@ export const theme: NickelTheme = {
 
     lineHeight: {
       sm: "125%",
-      md: "150%",
+      md: "160%",
       lg: "175%",
     },
 
@@ -102,4 +102,4 @@ export const theme: NickelTheme = {
 
     colors: nickelColors,
   },
-}
+};

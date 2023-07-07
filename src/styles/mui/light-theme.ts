@@ -1,43 +1,43 @@
 /* eslint-disable max-lines */
-import React from "react"
-import { createTheme } from "@mui/material/styles"
-import { theme as nickelTheme } from "src/app/presentation/styles/theme"
+import React from "react";
+import { createTheme } from "@mui/material/styles";
+import { theme as nickelTheme } from "src/app/presentation/styles/theme";
 
 declare module "@mui/material/styles/createTheme" {
   interface Theme {
     status: {
-      danger: React.CSSProperties["color"]
-    }
+      danger: React.CSSProperties["color"];
+    };
   }
   interface ThemeOptions {
     status: {
-      danger: React.CSSProperties["color"]
-    }
+      danger: React.CSSProperties["color"];
+    };
   }
 }
 
 declare module "@mui/material/styles/createPalette" {
   interface Palette {
-    secondary: Palette["primary"]
+    secondary: Palette["primary"];
   }
 }
 
 declare module "@mui/material/styles" {
   interface SimplePaletteColorOptions {
-    superLight?: string
+    superLight?: string;
   }
 
   interface PaletteColor {
-    superLight?: string
+    superLight?: string;
   }
 }
 
 declare module "@mui/material/IconButton" {
   interface IconButtonPropsColorOverrides {
-    outlinedPrimary: true
-    outlinedError: true
-    textPrimary: true
-    textError: true
+    outlinedPrimary: true;
+    outlinedError: true;
+    textPrimary: true;
+    textError: true;
   }
 }
 
@@ -102,7 +102,6 @@ const muiLightTheme = createTheme({
       defaultProps: {
         disableElevation: true,
         disableRipple: true,
-        size: "large",
         variant: "contained",
       },
       styleOverrides: {
@@ -171,6 +170,6 @@ const muiLightTheme = createTheme({
       },
     },
   },
-})
+});
 
-export default muiLightTheme
+export default muiLightTheme;
