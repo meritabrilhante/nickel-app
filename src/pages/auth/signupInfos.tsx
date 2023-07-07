@@ -1,26 +1,28 @@
-import { useRouter } from "next/router"
-import { Box, Stack, styled } from "@mui/material"
-import { Button } from "@/app/presentation/components/layout/atoms/button"
-import SimpleLayout from "@/app/presentation/components/layout/simpleLayout/SimpleLayout.component"
-import { SignupInfosForm } from "@/core/components/SignupInfosForm"
+import { useRouter } from "next/router";
+import { Box, Stack, styled } from "@mui/material";
+import { Button } from "@/app/presentation/components/layout/atoms/button";
+import SimpleLayout from "@/app/presentation/components/layout/simpleLayout/SimpleLayout.component";
+import { SignupInfosForm } from "@/core/components/SignupInfosForm";
+import { BsArrowLeft } from "react-icons/bs";
+import { BsArrowRightCircleFill } from "react-icons/bs";
 
 const SignupContainer = styled(Box)(() => ({
   width: "50%",
   display: "flex",
   flexDirection: "column",
   margin: "auto 0",
-}))
+}));
 
 const SignupPage = () => {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleGoBack = () => {
-    router.push("/auth/signup")
-  }
+    router.push("/auth/signup");
+  };
 
   const handleGoOn = () => {
-    router.push("/auth/wellcome")
-  }
+    router.push("/auth/wellcome");
+  };
 
   return (
     <SimpleLayout width={"100%"}>
@@ -44,15 +46,19 @@ const SignupPage = () => {
           }}
         >
           <Button buttonClass={"primary"} onClick={handleGoOn}>
-            Continuar
+            <center>
+              <BsArrowRightCircleFill style={{ opacity: "0%" }} /> Continuar
+            </center>
           </Button>
           <Button buttonClass={"tertiary"} onClick={handleGoBack}>
-            Voltar
+            <center>
+              <BsArrowLeft /> Cancelar
+            </center>
           </Button>
         </Stack>
       </SignupContainer>
     </SimpleLayout>
-  )
-}
+  );
+};
 
-export default SignupPage
+export default SignupPage;
