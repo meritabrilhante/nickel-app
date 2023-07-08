@@ -3,6 +3,10 @@ import { Breadcrumbs } from "@/app/presentation/components/layout/atoms/breadcru
 import MainLayout from "@/app/presentation/components/layout/main-layout/MainLayout.component";
 import { NewDiscussionForm } from "@/core/components/discussion/new";
 import { Box, Stack, styled } from "@mui/material";
+import { Modal } from "@/app/presentation/components/layout/atoms/modal";
+import { useState } from "react";
+import { Router } from "express";
+import { useRouter } from "next/router";
 
 const NewDiscussionContainer = styled(Box)(() => ({
   display: "flex",
@@ -17,6 +21,19 @@ export const NewDiscussion = () => {
     { label: "Home", link: "/home" },
     { label: "Nova Discussão", link: "/" },
   ];
+
+  const router = useRouter();
+
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleClose = () => {
+    setOpenModal(false);
+  };
+
+  const handleOpen = () => {
+    setOpenModal(true);
+  };
+
   return (
     <MainLayout width={"100%"} pageTitle={"Nova Discussão"}>
       <NewDiscussionContainer>
@@ -35,11 +52,29 @@ export const NewDiscussion = () => {
             justifyContent: "space-between",
           }}
         >
-          <Button buttonClass={"secondary"} size={"large"}>
+          <Button buttonClass={"secondary"} size={"large"} onClick={handleOpen}>
             ← Voltar
           </Button>
 
-          <Button buttonClass={"primary"} size={"large"}>
+          <Modal
+            open={openModal}
+            onClose={() => {
+              setOpenModal(false);
+            }}
+            icon={"info"}
+            children={<></>}
+            title={"Tem certeza que deseja sair?"}
+            message={"Você perderá as informações sobre a discussão"}
+            path={"home"}
+          />
+
+          <Button
+            buttonClass={"primary"}
+            size={"large"}
+            onClick={() => {
+              router.push("/discussions/discussionId");
+            }}
+          >
             + Publicar
           </Button>
         </Stack>
