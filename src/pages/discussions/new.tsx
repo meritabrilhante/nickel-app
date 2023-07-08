@@ -1,5 +1,5 @@
 import { Button } from "@/app/presentation/components/layout/atoms/button";
-import { Breadcrumbs } from "@/app/presentation/components/layout/breadcrumbs";
+import { Breadcrumbs } from "@/app/presentation/components/layout/atoms/breadcrumbs";
 import MainLayout from "@/app/presentation/components/layout/main-layout/MainLayout.component";
 import { NewDiscussionForm } from "@/core/components/discussion/new";
 import { Box, Stack, styled } from "@mui/material";
