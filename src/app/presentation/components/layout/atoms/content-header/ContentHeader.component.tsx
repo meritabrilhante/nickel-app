@@ -5,6 +5,8 @@ const ContentHeaderContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
+  width: "100%",
+  padding: "24px 0",
 }));
 
 interface ContentHeaderProps {

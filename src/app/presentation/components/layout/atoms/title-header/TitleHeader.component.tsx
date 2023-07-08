@@ -17,13 +17,7 @@ export interface TitleHeaderComponentProps {
 const TitleHeader = ({ title, button, description }: TitleHeaderComponentProps) => {
   return (
     <TitleHeaderContainer>
-      <Stack
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
+      <Stack direction={"row"}>
         <h1>{title}</h1>
         {button}
       </Stack>
