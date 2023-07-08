@@ -13,9 +13,10 @@ interface TextIconPropns {
   iconName: string;
   text: string;
   iconPosition: string;
+  size?: string;
 }
 
-export const TextIcon = ({ iconName, text, iconPosition }: TextIconPropns) => {
+export const TextIcon = ({ iconName, text, iconPosition, size }: TextIconPropns) => {
   return (
     <ContentCardContainer>
       {iconPosition === "left" ? (

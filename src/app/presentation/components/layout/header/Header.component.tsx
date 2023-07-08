@@ -4,6 +4,7 @@ import { UserMenu } from "../atoms/user-menu";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import LocalCafeIcon from "@mui/icons-material/LocalCafe";
+import { useRouter } from "next/router";
 
 interface HeaderContainerProps extends BoxProps {
   width: string;
@@ -63,6 +64,15 @@ const styles = {
 };
 
 const Header = ({ width }: FullHeaderProps) => {
+  const router = useRouter();
+  const handleExplore = () => {
+    router.push("/explore");
+  };
+
+  const handleMyRooms = () => {
+    router.push("/my_rooms");
+  };
+
   return (
     <FullHeaderContainer width={width}>
       <UpHeaderContainer width={"100%"}>
@@ -70,7 +80,7 @@ const Header = ({ width }: FullHeaderProps) => {
       </UpHeaderContainer>
 
       <MidHeaderContainer width={"100%"}>
-        <Link href="" underline="none" color="inherit">
+        <Link href="/home" underline="none" color="inherit">
           <h2>Nickel App</h2>
         </Link>
 
@@ -81,12 +91,12 @@ const Header = ({ width }: FullHeaderProps) => {
 
       <SubHeaderContainer>
         <Stack spacing={2} direction={"row"}>
-          <Button style={styles.button}>
+          <Button style={styles.button} onClick={handleExplore}>
             <SpaceDashboardIcon />
             Explorar
           </Button>
 
-          <Button style={styles.button}>
+          <Button style={styles.button} onClick={handleMyRooms}>
             <MeetingRoomIcon />
             Minhas Salas
           </Button>
