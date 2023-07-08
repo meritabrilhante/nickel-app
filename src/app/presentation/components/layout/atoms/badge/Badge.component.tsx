@@ -2,7 +2,7 @@ import React from "react";
 import { Box, styled } from "@mui/material";
 import { hexToRgb } from "@/app/presentation/utils/hex-rgb";
 
-const Badge = styled(Box)(({ mainColor, borderRadius, height }: BadgeProps) => ({
+const Badge = styled(Box)(({ mainColor, borderRadius, height, width }: BadgeProps) => ({
   display: "flex",
   alignItems: "center",
   color: `${mainColor}`,
@@ -13,6 +13,7 @@ const Badge = styled(Box)(({ mainColor, borderRadius, height }: BadgeProps) => (
   gap: "8px",
   paddingRight: "1rem",
   height: height,
+  width: width,
 }));
 
 interface BadgeProps {
@@ -20,11 +21,12 @@ interface BadgeProps {
   mainColor: string;
   borderRadius: string;
   height: string;
+  width?: string;
 }
 
-const BadgeComponent = ({ children, mainColor, borderRadius, height }: BadgeProps) => {
+const BadgeComponent = ({ children, mainColor, borderRadius, height, width }: BadgeProps) => {
   return (
-    <Badge mainColor={mainColor} borderRadius={borderRadius} height={height}>
+    <Badge mainColor={mainColor} borderRadius={borderRadius} height={height} width={width}>
       {children}
     </Badge>
   );

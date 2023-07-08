@@ -53,7 +53,6 @@ const MainLayout = ({ children, width, pageTitle }: MainLayoutProps) => {
 
       <Header width={width} />
       {children}
-
       <Button
         style={{
           zIndex: "999",
