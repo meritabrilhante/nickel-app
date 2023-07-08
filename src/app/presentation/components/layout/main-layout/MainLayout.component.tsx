@@ -3,6 +3,7 @@ import Footer from "@/app/presentation/components/layout/footer/Footer.component
 import Header from "@/app/presentation/components/layout/header/Header.component";
 import Head from "next/head";
 import { TextIcon } from "../atoms/text-icon";
+import { useRouter } from "next/router";
 
 /**
  * Interface that defines the properties for the HeaderContainer component
@@ -45,6 +46,12 @@ interface MainLayoutProps {
  */
 
 const MainLayout = ({ children, width, pageTitle }: MainLayoutProps) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/discussions/new");
+  };
+
   return (
     <MainLayoutContainer width={width} pageTitle={pageTitle}>
       <Head>
@@ -54,6 +61,7 @@ const MainLayout = ({ children, width, pageTitle }: MainLayoutProps) => {
       <Header width={width} />
       {children}
       <Button
+        onClick={handleClick}
         style={{
           zIndex: "999",
           position: "fixed",
