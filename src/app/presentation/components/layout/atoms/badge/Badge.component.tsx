@@ -14,6 +14,7 @@ const Badge = styled(Box)(({ mainColor, borderRadius, height, width }: BadgeProp
   paddingRight: "1rem",
   height: height,
   width: width,
+  cursor: "pointer",
 }));
 
 interface BadgeProps {
@@ -22,11 +23,26 @@ interface BadgeProps {
   borderRadius: string;
   height: string;
   width?: string;
+  onClick?: () => void; // New onClick prop
 }
 
-const BadgeComponent = ({ children, mainColor, borderRadius, height, width }: BadgeProps) => {
+const BadgeComponent = ({
+  children,
+  mainColor,
+  borderRadius,
+  height,
+  width,
+  onClick,
+}: BadgeProps) => {
   return (
-    <Badge mainColor={mainColor} borderRadius={borderRadius} height={height} width={width}>
+    <Badge
+      mainColor={mainColor}
+      borderRadius={borderRadius}
+      height={height}
+      width={width}
+      onClick={onClick}
+      style={{ display: "flex", justifyContent: "center" }}
+    >
       {children}
     </Badge>
   );

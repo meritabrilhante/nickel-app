@@ -48,14 +48,14 @@ export const CategoriesPage = () => {
             <Category
               mainColor={"#3E4ED9"}
               borderRadius={"4px"}
-              iconName={"FiMusic"}
+              iconName={"FiArchive"}
               text={"Biografia"}
               iconPosition={"left"}
             ></Category>
             <Category
               mainColor={"#133B5C"}
               borderRadius={"4px"}
-              iconName={"FiMusic"}
+              iconName={"FiGitlab"}
               text={"Biologia"}
               iconPosition={"left"}
             ></Category>
@@ -65,21 +65,21 @@ export const CategoriesPage = () => {
             <Category
               mainColor={"#5D8A90"}
               borderRadius={"4px"}
-              iconName={"FiMusic"}
+              iconName={"FiMap"}
               text={"Brasileira"}
               iconPosition={"left"}
             ></Category>
             <Category
               mainColor={"#3B949A"}
               borderRadius={"4px"}
-              iconName={"FiMusic"}
+              iconName={"FiAperture"}
               text={"Ciência"}
               iconPosition={"left"}
             ></Category>
             <Category
               mainColor={"#042C92"}
               borderRadius={"4px"}
-              iconName={"FiMusic"}
+              iconName={"FiFilm"}
               text={"Cinema"}
               iconPosition={"left"}
             ></Category>
@@ -89,21 +89,21 @@ export const CategoriesPage = () => {
             <Category
               mainColor={"#7A5D90"}
               borderRadius={"4px"}
-              iconName={"FiMusic"}
+              iconName={"FiCloudLightning"}
               text={"Drama"}
               iconPosition={"left"}
             ></Category>
             <Category
               mainColor={"#07ADD1"}
               borderRadius={"4px"}
-              iconName={"FiMusic"}
+              iconName={"FiLifeBuoy"}
               text={"Fantasia"}
               iconPosition={"left"}
             ></Category>
             <Category
               mainColor={"#8047CA"}
               borderRadius={"4px"}
-              iconName={"FiMusic"}
+              iconName={"FiMoon"}
               text={"Ficção Científica"}
               iconPosition={"left"}
             ></Category>
@@ -113,7 +113,7 @@ export const CategoriesPage = () => {
             <Category
               mainColor={"#90825D"}
               borderRadius={"4px"}
-              iconName={"FiMusic"}
+              iconName={"FiCamera"}
               text={"História"}
               iconPosition={"left"}
             ></Category>
@@ -127,7 +127,7 @@ export const CategoriesPage = () => {
             <Category
               mainColor={"#905D7C"}
               borderRadius={"4px"}
-              iconName={"FiMusic"}
+              iconName={"FiCodesandbox"}
               text={"Línguas"}
               iconPosition={"left"}
             ></Category>
@@ -151,7 +151,7 @@ export const CategoriesPage = () => {
             <Category
               mainColor={"#ED1845"}
               borderRadius={"4px"}
-              iconName={"FiMusic"}
+              iconName={"FiCpu"}
               text={"Tecnologia"}
               iconPosition={"left"}
             ></Category>

@@ -9,16 +9,22 @@ import {
   ContentCardTitleContainer,
 } from "./ContentCard";
 import { Visibility } from "@mui/icons-material";
+import { useRouter } from "next/router";
 
 export interface RoomCardProps {
   visibility: "lock" | "unlock";
 }
 
 export const RoomCard = ({ visibility }: RoomCardProps) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/categories");
+  };
   return (
     <ContentCardContainer>
       <ContentCardHeaderContainer>
-        <Badge mainColor={"#CC54C5"} borderRadius={"99px"} height={"32px"}>
+        <Badge mainColor={"#CC54C5"} borderRadius={"99px"} height={"32px"} onClick={handleClick}>
           <TextIcon iconName={"FiMusic"} text={"Música"} iconPosition={"left"} />
         </Badge>
 
