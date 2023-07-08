@@ -12,6 +12,11 @@ const WellcomeContainer = styled(Box)(() => ({
 }));
 
 const WellcomePage = () => {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/auth/login");
+  };
+
   return (
     <SimpleLayout width={"100%"}>
       <WellcomeContainer>
@@ -26,7 +31,9 @@ const WellcomePage = () => {
             Caso encontre algo alguma inconstintência e quiser contribuir, envie seu feedback para:{" "}
             <strong>nickelappifb@gmail.com</strong>
           </p>
-          <Button buttonClass={"primary"}>Entendi</Button>
+          <Button buttonClass={"primary"} size="large" onClick={handleClick}>
+            Entendi
+          </Button>
         </Stack>
       </WellcomeContainer>
     </SimpleLayout>

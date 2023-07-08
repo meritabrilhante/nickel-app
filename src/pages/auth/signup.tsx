@@ -8,12 +8,21 @@ import { BsArrowLeft } from "react-icons/bs";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import { SignupInfosForm } from "@/core/components/SignupInfosForm";
 import { Textarea } from "@/app/presentation/components/layout/atoms/textarea";
+import { TextIcon } from "@/app/presentation/components/layout/atoms/text-icon";
 
 const SignupContainer = styled(Box)(() => ({
   width: "50%",
   display: "flex",
   flexDirection: "column",
   margin: "auto 0",
+}));
+
+const Breadcrumb = styled(Box)(() => ({
+  display: "flex",
+  flexDirection: "row",
+  margin: "auto 0",
+  gap: "5px",
+  marginBottom: "20px",
 }));
 
 const SignupPage = () => {
@@ -53,7 +62,7 @@ const SignupPage = () => {
           </Stack>
 
           <Stack spacing={2}>
-            <Button buttonClass={"primary"} onClick={alternarComponente}>
+            <Button buttonClass={"primary"} size={"large"} onClick={alternarComponente}>
               Criar conta
             </Button>
             <p>
@@ -71,6 +80,11 @@ const SignupPage = () => {
         <>
           <SignupContainer>
             <div style={{ display: "flex", gap: "10px", flexDirection: "column" }}>
+              <Breadcrumb>
+                <TextIcon iconName="FiArrowRight" text="Cadastrar" iconPosition="right" />
+                <TextIcon iconName="FiArrowRight" text="Informações" iconPosition="right" />
+                <strong>Descrição</strong>
+              </Breadcrumb>
               <p>Nickel App</p>
               <h1>Descrição</h1>
               <p>Adicione uma breve descrição sobre você</p>
@@ -90,6 +104,10 @@ const SignupPage = () => {
         </>
       ) : (
         <SignupContainer>
+          <Breadcrumb>
+            <TextIcon iconName="FiArrowRight" text="Cadastrar" iconPosition="right" />
+            <strong>Informações</strong>
+          </Breadcrumb>
           <p>Nickel App</p>
           <h1>Informações</h1>
 
@@ -102,18 +120,14 @@ const SignupPage = () => {
               gap: "10px",
               display: "flex",
               alignContent: "center",
-              alignItems: "center",
-              flexDirection: "column",
-              margin: "0 auto",
-              width: "50%",
             }}
           >
-            <Button buttonClass={"primary"} onClick={handleGoOn}>
+            <Button buttonClass={"primary"} onClick={handleGoOn} size="large">
               <center>
                 <BsArrowRightCircleFill style={{ opacity: "0%" }} /> Continuar
               </center>
             </Button>
-            <Button buttonClass={"tertiary"} onClick={alternarComponente}>
+            <Button buttonClass={"tertiary"} onClick={alternarComponente} size="large">
               <center>
                 <BsArrowLeft /> Cancelar
               </center>

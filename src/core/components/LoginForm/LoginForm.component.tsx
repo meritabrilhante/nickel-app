@@ -5,7 +5,7 @@ const SimpleLayoutContainer = styled(Box)(() => ({
   display: "flex",
   gap: "40px",
   flexDirection: "column",
-  paddingBottom: "80px",
+  paddingBottom: "90px",
   paddingTop: "40px",
 }));
 
