@@ -47,9 +47,7 @@ const ExplorePage = () => {
           onClick={handleMenuOpen}
         >
           <h1>{selectedOption}</h1>
-          <IconButton>
-            <FiChevronDown />
-          </IconButton>
+          <TextIcon iconName="FiChevronDown" iconPosition="right" text="" />
         </Stack>
 
         <Menu
