@@ -154,11 +154,10 @@ const muiLightTheme = createTheme({
     MuiIconButton: {
       styleOverrides: {
         root: {
-          height: "1rem",
+          height: "40px",
           color: "var(--color-light)",
-          padding: "0px",
           "&.Mui-hover": {
-            backgroundColor: "none",
+            backgroundColor: "var(--color-tertiary)",
           },
         },
       },

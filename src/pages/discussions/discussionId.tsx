@@ -23,17 +23,6 @@ export const Discussion = () => {
     { label: "Título da Discussão", link: "/" },
   ];
 
-  const [openDeleteModal, setOpenDeleteModal] = useState(false);
-  const [openArchiveModal, setOpenArchiveModal] = useState(false);
-
-  const handleOpenDeleteModal = () => {
-    setOpenDeleteModal(true);
-  };
-
-  const handleOpenArchiveModal = () => {
-    setOpenArchiveModal(true);
-  };
-
   return (
     <MainLayout width={"100%"} pageTitle={"Título da Discussão"}>
       <DiscussionContainer>
@@ -51,91 +40,7 @@ export const Discussion = () => {
           </Stack>
         </Stack>
 
-        <Stack spacing={1}>
-          <ContentCard type={"discussion"} />
-
-          <Stack
-            direction={"row"}
-            style={{
-              display: "flex",
-              gap: "16px",
-              alignItems: "center",
-              width: "600px",
-            }}
-          >
-            <Button
-              buttonClass={"quartenary"}
-              mainColor={"var(--color-error-pure)"}
-              size={"large"}
-              onClick={handleOpenDeleteModal}
-            >
-              <TextIcon iconName={"FiTrash2"} text={"Deletar"} iconPosition={"left"} />
-            </Button>
-
-            <Modal
-              icon={"error"}
-              title={"Tem certeza deletar a discussão?"}
-              message={
-                "A deleção é permanente e não será possível resgatar as informações posteriormente"
-              }
-              open={openDeleteModal}
-              onClose={() => {
-                setOpenDeleteModal(false);
-              }}
-            >
-              <>
-                <Button
-                  buttonClass={"secondary"}
-                  mainColor={""}
-                  onClick={() => {
-                    setOpenDeleteModal(false);
-                  }}
-                >
-                  ← Voltar
-                </Button>
-
-                <Button buttonClass={"secondary"} mainColor={""}>
-                  Deletar
-                </Button>
-              </>
-            </Modal>
-
-            <Button
-              buttonClass={"quartenary"}
-              mainColor={"var(--color-light)"}
-              size={"large"}
-              onClick={handleOpenArchiveModal}
-            >
-              <TextIcon iconName={"FiArchive"} text={"Arquivar"} iconPosition={"left"} />
-            </Button>
-
-            <Modal
-              icon={"info"}
-              title={"Tem certeza que deseja arquivar esta discussão?"}
-              message={"Ela estará disponível na sessão minhas interações"}
-              open={openArchiveModal}
-              onClose={() => {
-                setOpenArchiveModal(false);
-              }}
-            >
-              <>
-                <Button
-                  buttonClass={"secondary"}
-                  mainColor={""}
-                  onClick={() => {
-                    setOpenArchiveModal(false);
-                  }}
-                >
-                  ← Voltar
-                </Button>
-
-                <Button buttonClass={"secondary"} mainColor={""}>
-                  Arquivar
-                </Button>
-              </>
-            </Modal>
-          </Stack>
-        </Stack>
+        <ContentCard type={"discussion"} />
       </DiscussionContainer>
     </MainLayout>
   );
