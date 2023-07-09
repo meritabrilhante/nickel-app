@@ -34,7 +34,7 @@ export const NewDiscussion = () => {
   };
 
   return (
-    <MainLayout width={"100%"} pageTitle={"Nova Discussão"}>
+    <MainLayout width={"100%"} pageTitle={"Nova Discussão"} mainButton={false}>
       <NewDiscussionContainer>
         <Stack spacing={4}>
           <Breadcrumbs path={breadcrumbsPath} />
@@ -64,7 +64,6 @@ export const NewDiscussion = () => {
             children={<></>}
             title={"Tem certeza que deseja sair?"}
             message={"Você perderá as informações sobre a discussão"}
-            path={"home"}
           />
 
           <Button
