@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { IconButton, Stack } from "@mui/material";
 import { Badge } from "../badge";
 import { Button } from "../button";
 import { TextIcon } from "../text-icon";
@@ -8,8 +8,10 @@ import {
   ContentCardHeaderContainer,
   ContentCardTitleContainer,
 } from "./ContentCard";
-import { Visibility } from "@mui/icons-material";
 import { useRouter } from "next/router";
+import React, { useState } from "react";
+import { DeleteButton } from "../delete-button";
+import MenuComponent from "../menu/Menu.Component";
 
 export interface RoomCardProps {
   visibility: "lock" | "unlock";
@@ -21,6 +23,34 @@ export const RoomCard = ({ visibility }: RoomCardProps) => {
   const handleClick = () => {
     router.push("/categories");
   };
+
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const open = Boolean(anchorEl);
+
+  const handleClickModal = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const options = [
+    {
+      label: (
+        <DeleteButton
+          modalTitle={"Tem certeza que deseja deletar a sala?"}
+          modalMessage={"A ação é permanente e não será possível reverte-la."}
+        />
+      ),
+      onItemClick: () => console.log("Não deveria estar aqui"),
+    },
+    {
+      label: <p>← Cancelar</p>,
+      onItemClick: handleClose,
+    },
+  ];
+
   return (
     <ContentCardContainer>
       <ContentCardHeaderContainer>
@@ -28,9 +58,27 @@ export const RoomCard = ({ visibility }: RoomCardProps) => {
           <TextIcon iconName={"FiMusic"} text={"Música"} iconPosition={"left"} />
         </Badge>
 
-        <Button buttonClass={"secondary"}>
+        <IconButton
+          onClick={handleClickModal}
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+        >
           <Icon name={"FiMoreVertical"} />
-        </Button>
+        </IconButton>
+
+        {anchorEl && (
+          <MenuComponent
+            options={options}
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+            onItemClick={(option) => option.onItemClick()}
+          />
+        )}
       </ContentCardHeaderContainer>
 
       <ContentCardTitleContainer>
@@ -54,7 +102,7 @@ export const RoomCard = ({ visibility }: RoomCardProps) => {
           )}
         </Stack>
 
-        <Button buttonClass={"tertiary"} size={"small"}>
+        <Button buttonClass={"tertiary"} size={"small"} mainColor={""}>
           <TextIcon iconName={"FiArrowRight"} text={"Ver Sala"} iconPosition={"right"} />
         </Button>
       </Stack>

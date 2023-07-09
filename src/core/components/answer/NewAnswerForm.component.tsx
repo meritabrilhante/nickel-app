@@ -2,6 +2,7 @@ import { Button } from "@/app/presentation/components/layout/atoms/button";
 import { Textarea } from "@/app/presentation/components/layout/atoms/textarea";
 import { UserMenu } from "@/app/presentation/components/layout/atoms/user-menu";
 import { Box, Stack, styled } from "@mui/material";
+import { useRouter } from "next/router";
 
 const NewAnswerFormContainer = styled(Box)(() => ({
   display: "flex",
@@ -9,6 +10,12 @@ const NewAnswerFormContainer = styled(Box)(() => ({
 }));
 
 const NewAnswerForm = () => {
+  const router = useRouter();
+
+  const handleGoBack = () => {
+    router.back();
+  };
+
   return (
     <NewAnswerFormContainer>
       <Stack spacing={1}>
@@ -18,7 +25,7 @@ const NewAnswerForm = () => {
       </Stack>
 
       <Stack direction={"row"} spacing={2} style={{ marginTop: "5%" }}>
-        <Button buttonClass={"secondary"} mainColor={""} size={"large"}>
+        <Button buttonClass={"secondary"} mainColor={""} size={"large"} onClick={handleGoBack}>
           ← Cancelar
         </Button>
 

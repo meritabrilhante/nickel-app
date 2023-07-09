@@ -7,6 +7,7 @@ const ContentCardContainer = styled(Box)(() => ({
   flexDirection: "row",
   gap: "4px",
   width: "fit-content",
+  fontSize: "1rem",
 }));
 
 interface TextIconPropns {
