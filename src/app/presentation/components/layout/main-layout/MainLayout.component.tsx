@@ -36,6 +36,9 @@ interface MainLayoutProps {
   children: React.ReactNode;
   width: string;
   pageTitle: string;
+  mainButton: boolean;
+  mainButtonLabel?: React.ReactNode;
+  mainButtonAction?: string;
 }
 
 /**
@@ -45,11 +48,18 @@ interface MainLayoutProps {
  * @param {HeaderProps} props
  */
 
-const MainLayout = ({ children, width, pageTitle }: MainLayoutProps) => {
+const MainLayout = ({
+  children,
+  width,
+  pageTitle,
+  mainButton,
+  mainButtonAction = "/",
+  mainButtonLabel,
+}: MainLayoutProps) => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push("/discussions/new");
+    router.push(mainButtonAction);
   };
 
   return (
@@ -60,24 +70,29 @@ const MainLayout = ({ children, width, pageTitle }: MainLayoutProps) => {
 
       <Header width={width} />
       {children}
-      <Button
-        onClick={handleClick}
-        style={{
-          zIndex: "999",
-          position: "fixed",
-          right: "calc(100vw - 95%)",
-          bottom: "calc(100vh - 95%)",
-          height: "56px",
-          background: "var(--color-primary-pure)",
-          width: "fit-content",
-          padding: "0 24px",
-          fontSize: "18px",
-          fontWeight: "600",
-          borderRadius: "8px 8px 0 8px",
-        }}
-      >
-        <TextIcon iconName={"FiPlus"} text={"Nova Discussão"} iconPosition={"left"} />
-      </Button>
+
+      {mainButton ? (
+        <Button
+          onClick={handleClick}
+          style={{
+            zIndex: "999",
+            position: "fixed",
+            right: "calc(100vw - 95%)",
+            bottom: "calc(100vh - 95%)",
+            height: "56px",
+            background: "var(--color-primary-pure)",
+            width: "fit-content",
+            padding: "0 24px",
+            fontSize: "18px",
+            fontWeight: "600",
+            borderRadius: "8px 8px 0 8px",
+          }}
+        >
+          {mainButtonLabel}
+        </Button>
+      ) : (
+        <></>
+      )}
 
       <Footer width={"100%"} />
     </MainLayoutContainer>
