@@ -97,7 +97,7 @@ const MainLayout = ({
         <></>
       )}
 
-      <Footer width={"100%"} />
+      {isMobile ? <LowBar /> : <Footer width="100%" />}
     </MainLayoutContainer>
   );
 };
