@@ -73,6 +73,7 @@ export const NewDiscussion = () => {
             onClick={() => {
               router.push("/discussions/discussionId");
             }}
+            mainColor={""}
           >
             + Publicar
           </Button>

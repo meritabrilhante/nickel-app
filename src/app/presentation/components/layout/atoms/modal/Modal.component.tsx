@@ -9,7 +9,6 @@ export interface CustomModalProps extends ModalProps {
   icon: ModalIcon;
   title: string;
   message: string;
-  path: string;
 }
 
 const ModalIconPath = {
@@ -18,7 +17,7 @@ const ModalIconPath = {
   info: <InfoIcon type={"info"} />,
 };
 
-const ModalComponent = ({ open, onClose, icon, title, message, path }: CustomModalProps) => {
+const ModalComponent = ({ open, onClose, icon, title, message, children }: CustomModalProps) => {
   const router = useRouter();
 
   const style = {
@@ -30,7 +29,6 @@ const ModalComponent = ({ open, onClose, icon, title, message, path }: CustomMod
     flexDirection: "column",
     justifyContent: "space-between",
     width: "20%",
-    height: "25%",
     borderRadius: "16px",
     bgcolor: "var(--color-tertiary)",
     boxShadow: 24,
@@ -49,17 +47,12 @@ const ModalComponent = ({ open, onClose, icon, title, message, path }: CustomMod
           {ModalIconPath[icon]}
 
           <h3>{title}</h3>
-          <p>{message}</p>
+          <p style={{ width: "fit-content" }}>{message}</p>
         </Stack>
 
-        <Button
-          buttonClass={"secondary"}
-          onClick={() => {
-            router.push(`/${path}`);
-          }}
-        >
-          Ok →
-        </Button>
+        <Stack direction={"row"} style={{ marginTop: "24px" }}>
+          {children}
+        </Stack>
       </Box>
     </Modal>
   );
