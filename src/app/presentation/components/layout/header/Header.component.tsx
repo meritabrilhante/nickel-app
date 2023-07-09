@@ -73,6 +73,10 @@ const Header = ({ width }: FullHeaderProps) => {
     router.push("/my_rooms");
   };
 
+  const handleMyInteractions = () => {
+    router.push("/my_interactions");
+  };
+
   return (
     <FullHeaderContainer width={width}>
       <UpHeaderContainer width={"100%"}>
@@ -101,7 +105,7 @@ const Header = ({ width }: FullHeaderProps) => {
             Minhas Salas
           </Button>
 
-          <Button style={styles.button}>
+          <Button style={styles.button} onClick={handleMyInteractions}>
             <LocalCafeIcon />
             Minhas Interações
           </Button>
