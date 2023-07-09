@@ -68,6 +68,7 @@ const MainLayout = ({ children, width, pageTitle }: MainLayoutProps) => {
           right: "calc(100vw - 95%)",
           bottom: "calc(100vh - 95%)",
           height: "56px",
+          background: "var(--color-primary-pure)",
           width: "fit-content",
           padding: "0 24px",
           fontSize: "18px",

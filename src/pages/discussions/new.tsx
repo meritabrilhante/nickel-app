@@ -51,7 +51,7 @@ export const NewDiscussion = () => {
             justifyContent: "space-between",
           }}
         >
-          <Button buttonClass={"secondary"} size={"large"} onClick={handleOpen}>
+          <Button buttonClass={"secondary"} size={"large"} onClick={handleOpen} mainColor={""}>
             ← Voltar
           </Button>
 

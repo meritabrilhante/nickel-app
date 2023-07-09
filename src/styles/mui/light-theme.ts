@@ -106,17 +106,22 @@ const muiLightTheme = createTheme({
       },
       styleOverrides: {
         root: {
+          "&.MuiButton-sizeLarge": {
+            height: "48px",
+          },
           fontFamily: "var(--font-family-primary)",
           lineHeight: "var(--line-height-sm)",
           letterSpacing: "0.5px",
           fontSize: "var(--font-size-xs)",
           textAlign: "center",
+          background: "none",
           textTransform: "none",
           border: "inherit",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           gap: "0.5rem",
+          width: "100%",
         },
       },
     },

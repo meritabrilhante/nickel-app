@@ -26,7 +26,7 @@ export const HomePage = () => {
         >
           <h1>Página Inicial</h1>
 
-          <Button buttonClass={"tertiary"}>
+          <Button buttonClass={"tertiary"} mainColor={"none"}>
             <TextIcon iconName={"FiFilter"} text={"Mais recente"} iconPosition={"left"} />
           </Button>
         </Stack>

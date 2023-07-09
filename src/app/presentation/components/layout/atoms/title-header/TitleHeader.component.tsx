@@ -3,24 +3,21 @@ import { Box, Stack } from "@mui/material";
 
 const TitleHeaderContainer = styled(Box)(() => ({
   display: "flex",
-  alignItems: "center",
-  flexDirection: "column",
+  alignItems: "flex-start",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  width: "100%",
 }));
 
 export interface TitleHeaderComponentProps {
-  button?: React.ReactNode;
-  leftIcon?: React.ReactNode;
   title: string;
-  description?: string;
+  description: string;
 }
 
-const TitleHeader = ({ title, button, description }: TitleHeaderComponentProps) => {
+const TitleHeader = ({ title, description }: TitleHeaderComponentProps) => {
   return (
     <TitleHeaderContainer>
-      <Stack direction={"row"}>
-        <h1>{title}</h1>
-        {button}
-      </Stack>
+      <h1 style={{ width: "80%", lineHeight: "140%" }}>{title}</h1>
       {description}
     </TitleHeaderContainer>
   );
