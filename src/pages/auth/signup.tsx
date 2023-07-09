@@ -62,7 +62,7 @@ const SignupPage = () => {
           </Stack>
 
           <Stack spacing={2}>
-            <Button buttonClass={"primary"} size={"large"} onClick={alternarComponente}>
+            <Button buttonClass={"primary"} size={"medium"} onClick={alternarComponente}>
               Criar conta
             </Button>
             <p>
@@ -122,12 +122,12 @@ const SignupPage = () => {
               alignContent: "center",
             }}
           >
-            <Button buttonClass={"primary"} onClick={handleGoOn} size="large">
+            <Button buttonClass={"primary"} onClick={handleGoOn} size="medium">
               <center>
                 <BsArrowRightCircleFill style={{ opacity: "0%" }} /> Continuar
               </center>
             </Button>
-            <Button buttonClass={"tertiary"} onClick={alternarComponente} size="large">
+            <Button buttonClass={"tertiary"} onClick={alternarComponente} size="medium">
               <center>
                 <BsArrowLeft /> Cancelar
               </center>

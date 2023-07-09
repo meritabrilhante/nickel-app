@@ -1,16 +1,11 @@
+import React, { useState, useEffect } from "react";
 import { Box, BoxProps, Button, Stack, styled } from "@mui/material";
-import Footer from "@/app/presentation/components/layout/footer/Footer.component";
 import Header from "@/app/presentation/components/layout/header/Header.component";
 import Head from "next/head";
 import { TextIcon } from "../atoms/text-icon";
 import { useRouter } from "next/router";
-
-/**
- * Interface that defines the properties for the HeaderContainer component
- * @interface
- * @extends BoxProps
- * @prop {string} height
- */
+import { LowBar } from "@/app/presentation/components/layout/atoms/low-bar";
+import { Footer } from "../footer";
 
 interface MainLayoutContainerProps extends BoxProps {
   width: string;
@@ -25,32 +20,33 @@ const MainLayoutContainer = styled(Box)(({ width }: MainLayoutContainerProps) =>
   height: "100vh",
 }));
 
-/**
- * Interface that defines the properties for the Header component
- * @interface
- * @prop {React.ReactNode} children
- * @prop {string} height
- */
-
 interface MainLayoutProps {
   children: React.ReactNode;
   width: string;
   pageTitle: string;
 }
 
-/**
- * Component that displays the layout for the modal Header
- * @function
- * @name Header
- * @param {HeaderProps} props
- */
-
 const MainLayout = ({ children, width, pageTitle }: MainLayoutProps) => {
   const router = useRouter();
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleClick = () => {
     router.push("/discussions/new");
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 700);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <MainLayoutContainer width={width} pageTitle={pageTitle}>
@@ -78,8 +74,7 @@ const MainLayout = ({ children, width, pageTitle }: MainLayoutProps) => {
       >
         <TextIcon iconName={"FiPlus"} text={"Nova Discussão"} iconPosition={"left"} />
       </Button>
-
-      <Footer width={"100%"} />
+      {isMobile ? <LowBar /> : <Footer width="100%" />}
     </MainLayoutContainer>
   );
 };

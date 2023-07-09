@@ -9,6 +9,7 @@ const WellcomeContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   margin: "auto 0",
+  minWidth: "300px",
 }));
 
 const WellcomePage = () => {

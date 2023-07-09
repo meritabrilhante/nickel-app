@@ -5,12 +5,16 @@ import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import LocalCafeIcon from "@mui/icons-material/LocalCafe";
 import { useRouter } from "next/router";
+import React, { useState, useEffect } from "react";
+import { IconButton, InputAdornment, InputBase } from "@mui/material";
+import { Search } from "@mui/icons-material";
 
 interface HeaderContainerProps extends BoxProps {
   width: string;
 }
 
 const FullHeaderContainer = styled(Box)(({ width }: HeaderContainerProps) => ({
+  width: "100%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -39,12 +43,12 @@ const SubHeaderContainer = styled(Box)(() => ({
   width: "100%",
 }));
 
-const MidHeaderContainer = styled(Box)(({ width }: UpHeaderContainerProps) => ({
+const MidHeaderContainer = styled(Box)(({ width }: HeaderContainerProps) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  padding: "0.8rem 10rem",
-  width: "100%",
+  padding: "0.8rem 2rem", // Reduzindo o padding para se adaptar a telas menores
+  width: "100%", // Utilizando a largura total disponível
   backgroundColor: "var(--color-tertiary)",
 }));
 
@@ -64,6 +68,20 @@ const styles = {
 };
 
 const Header = ({ width }: FullHeaderProps) => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 700);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const router = useRouter();
   const handleExplore = () => {
     router.push("/explore");
@@ -88,29 +106,39 @@ const Header = ({ width }: FullHeaderProps) => {
           <h2>Nickel App</h2>
         </Link>
 
-        <SearchComponent />
+        {!isMobile ? <SearchComponent /> : <div> </div>}
 
-        <UserMenu />
+        {isMobile ? (
+          <Stack gap={2} direction={"row"} alignItems={"center"}>
+            <IconButton>
+              <Search />
+            </IconButton>
+            <UserMenu />
+          </Stack>
+        ) : (
+          <UserMenu />
+        )}
       </MidHeaderContainer>
+      {!isMobile && (
+        <SubHeaderContainer>
+          <Stack spacing={2} direction={"row"}>
+            <Button style={styles.button} onClick={handleExplore}>
+              <SpaceDashboardIcon />
+              Explorar
+            </Button>
 
-      <SubHeaderContainer>
-        <Stack spacing={2} direction={"row"}>
-          <Button style={styles.button} onClick={handleExplore}>
-            <SpaceDashboardIcon />
-            Explorar
-          </Button>
+            <Button style={styles.button} onClick={handleMyRooms}>
+              <MeetingRoomIcon />
+              Minhas Salas
+            </Button>
 
-          <Button style={styles.button} onClick={handleMyRooms}>
-            <MeetingRoomIcon />
-            Minhas Salas
-          </Button>
-
-          <Button style={styles.button} onClick={handleMyInteractions}>
-            <LocalCafeIcon />
-            Minhas Interações
-          </Button>
-        </Stack>
-      </SubHeaderContainer>
+            <Button style={styles.button} onClick={handleMyInteractions}>
+              <LocalCafeIcon />
+              Minhas Interações
+            </Button>
+          </Stack>
+        </SubHeaderContainer>
+      )}
     </FullHeaderContainer>
   );
 };

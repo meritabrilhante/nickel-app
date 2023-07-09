@@ -11,7 +11,7 @@ interface ButtonComponentProps extends ButtonProps {
   size?: ButtonSize;
   children?: React.ReactNode;
   buttonClass: ButtonClass;
-  mainColor: string;
+  mainColor?: string;
 }
 
 const PrimaryButton = styled(Button)(({ mainColor }: ButtonComponentProps) => ({

@@ -1,11 +1,19 @@
+import React, { useEffect } from "react";
 import MainLayout from "@/app/presentation/components/layout/main-layout/MainLayout.component";
+import { useRouter } from "next/router";
 
 const Home = () => {
-  return (
-    <MainLayout width={"100%"} pageTitle={"Home"}>
-      {" "}
-    </MainLayout>
-  );
+  const router = useRouter();
+
+  const handleRedirect = () => {
+    router.push("/auth/login");
+  };
+
+  /*useEffect(() => {
+    handleRedirect();
+  }, []);*/
+
+  return <MainLayout width={"100%"} pageTitle={"Home"}></MainLayout>;
 };
 
 export default Home;
