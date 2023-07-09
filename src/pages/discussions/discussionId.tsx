@@ -28,6 +28,7 @@ export const Discussion = () => {
       pageTitle={"Título da Discussão"}
       mainButton={true}
       mainButtonLabel={<TextIcon iconName={"FiPlus"} text={"Responder"} iconPosition={"left"} />}
+      mainButtonAction={"/answers/new"}
     >
       <DiscussionContainer>
         <Stack

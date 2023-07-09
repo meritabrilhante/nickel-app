@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import MenuComponent from "../menu/Menu.Component";
 import React, { useState } from "react";
 import { Modal } from "../modal";
+import { DeleteButton } from "../delete-button";
 
 export const DiscussionCard = () => {
   const router = useRouter();
@@ -49,14 +50,12 @@ export const DiscussionCard = () => {
     },
     {
       label: (
-        <TextIcon
-          iconName={"FiTrash2"}
-          text={"Deletar"}
-          iconPosition={"left"}
-          color={"var(--color-error-pure)"}
+        <DeleteButton
+          modalTitle={"Tem certeza que deseja deletar a discussão?"}
+          modalMessage={"A ação é permanente e não será possível reverte-la."}
         />
       ),
-      onItemClick: handleOpenDeleteModal,
+      onItemClick: console.log("Não deveria estar aqui"),
     },
     {
       label: <p>← Cancelar</p>,
@@ -119,34 +118,6 @@ export const DiscussionCard = () => {
           <TextIcon iconName={"FiArrowRight"} text={"Ver discussão"} iconPosition={"right"} />
         </Button>
       </Stack>
-
-      <Modal
-        icon={"error"}
-        title={"Tem certeza deletar a discussão?"}
-        message={
-          "A deleção é permanente e não será possível resgatar as informações posteriormente"
-        }
-        open={openDeleteModal}
-        onClose={() => {
-          setOpenDeleteModal(false);
-        }}
-      >
-        <>
-          <Button
-            buttonClass={"secondary"}
-            mainColor={""}
-            onClick={() => {
-              setOpenDeleteModal(false);
-            }}
-          >
-            ← Voltar
-          </Button>
-
-          <Button buttonClass={"secondary"} mainColor={""}>
-            Deletar
-          </Button>
-        </>
-      </Modal>
 
       <Modal
         icon={"info"}

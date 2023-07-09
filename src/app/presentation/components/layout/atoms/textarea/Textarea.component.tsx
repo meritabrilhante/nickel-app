@@ -53,7 +53,7 @@ const Textarea = ({ children, label, message, placeholder }: InputProps) => {
           }}
         ></textarea>
 
-        <p style={{ fontSize: "0.875rem" }}>{message}</p>
+        <p>{message}</p>
       </Stack>
     </InputContainer>
   );
