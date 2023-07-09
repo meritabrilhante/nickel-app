@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Stack, Typography, IconButton, Menu, MenuItem } from "@mui/material";
-import { FiChevronDown } from "react-icons/fi";
-import { Button } from "@/app/presentation/components/layout/atoms/button";
 import { ContentCard } from "@/app/presentation/components/layout/atoms/content-card";
 import { TextIcon } from "@/app/presentation/components/layout/atoms/text-icon";
 import MainLayout from "@/app/presentation/components/layout/main-layout/MainLayout.component";
 import { Box, styled } from "@mui/material";
+import { Button } from "@/app/presentation/components/layout/atoms/button";
 
 const HomeContainer = styled(Box)(() => ({
   display: "flex",
@@ -35,19 +34,31 @@ const ExplorePage = () => {
     <MainLayout width="100%" pageTitle="Home">
       <HomeContainer>
         <Stack
-          direction="row"
+          direction={"row"}
           style={{
             display: "flex",
             gap: "10px",
             width: "100%",
-            marginBottom: "16px",
-            cursor: "pointer",
           }}
-          alignItems="center"
-          onClick={handleMenuOpen}
         >
-          <h1>{selectedOption}</h1>
-          <TextIcon iconName="FiChevronDown" iconPosition="right" text="" />
+          <Stack
+            direction="row"
+            style={{
+              display: "flex",
+              gap: "10px",
+              width: "100%",
+              marginBottom: "16px",
+              cursor: "pointer",
+            }}
+            alignItems="center"
+            onClick={handleMenuOpen}
+          >
+            <h1>{selectedOption}</h1>
+            <TextIcon iconName="FiChevronDown" iconPosition="right" text="" />
+          </Stack>
+          <Button buttonClass={"tertiary"}>
+            <TextIcon iconName={"FiTrello"} text={"Alfabética"} iconPosition={"right"} />
+          </Button>
         </Stack>
 
         <Menu
