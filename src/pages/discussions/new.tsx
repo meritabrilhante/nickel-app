@@ -5,7 +5,6 @@ import { NewDiscussionForm } from "@/core/components/discussion/new";
 import { Box, Stack, styled } from "@mui/material";
 import { Modal } from "@/app/presentation/components/layout/atoms/modal";
 import { useState } from "react";
-import { Router } from "express";
 import { useRouter } from "next/router";
 
 const NewDiscussionContainer = styled(Box)(() => ({
