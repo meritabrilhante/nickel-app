@@ -91,13 +91,13 @@ export const MyInteractions = () => {
           contentText={"Não havia pensado por esse lado ainda, obrigado!"}
         />
         <Interaction
-          titulo=""
+          titulo="Novos quadrinhos do superman são incríveis!"
           date={"08/02/23"}
           badgeColor="#8257E6"
           texto="Reação"
           id="#778853"
           react={false}
-          contentText={"Prefiro muito mais as coisas mais antigas, essas novas são um saco!"}
+          contentText={"Prefiro muito mais as coisas mais antigas, esses novos são um saco!"}
         />
       </HomeContainer>
     </MainLayout>
