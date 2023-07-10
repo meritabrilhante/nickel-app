@@ -155,6 +155,7 @@ const muiLightTheme = createTheme({
       styleOverrides: {
         root: {
           height: "40px",
+          cursor: "pointer",
           color: "var(--color-light)",
           "&.Mui-hover": {
             backgroundColor: "var(--color-tertiary)",

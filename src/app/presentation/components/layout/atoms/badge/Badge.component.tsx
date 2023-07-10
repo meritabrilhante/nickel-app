@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, styled } from "@mui/material";
 import { hexToRgb } from "@/app/presentation/utils/hex-rgb";
+import { TextIcon } from "../text-icon";
 
 const Badge = styled(Box)(({ mainColor, borderRadius, height, width }: BadgeProps) => ({
   display: "flex",
@@ -9,16 +10,15 @@ const Badge = styled(Box)(({ mainColor, borderRadius, height, width }: BadgeProp
   background: hexToRgb(mainColor, "0.08"),
   borderRadius: borderRadius,
   border: `2px solid ${mainColor}`,
-  paddingLeft: "1rem",
   gap: "8px",
-  paddingRight: "1rem",
   height: height,
-  width: width,
+  width: "fit-content",
+  padding: "0 8px 0 8px",
   cursor: "pointer",
 }));
 
 interface BadgeProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   mainColor: string;
   borderRadius: string;
   height: string;
@@ -26,14 +26,10 @@ interface BadgeProps {
   onClick?: () => void; // New onClick prop
 }
 
-const BadgeComponent = ({
-  children,
-  mainColor,
-  borderRadius,
-  height,
-  width,
-  onClick,
-}: BadgeProps) => {
+const BadgeComponent = (
+  { mainColor, children, borderRadius, height, width, onClick }: BadgeProps,
+  { icon, label }
+) => {
   return (
     <Badge
       mainColor={mainColor}
