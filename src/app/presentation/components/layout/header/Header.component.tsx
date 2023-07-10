@@ -1,19 +1,14 @@
 import { Box, Link, Stack, styled, useMediaQuery, useTheme } from "@mui/material";
 import { TextIcon } from "../atoms/text-icon";
+import { UserMenu } from "../atoms/user-menu";
 
-const HeaderContainer = styled(Box)(({ theme }) => ({
+const HeaderContainer = styled(Box)(() => ({
   display: "flex",
   width: "inherit",
   flexDirection: "column",
   backgroundColor: "var(--color-tertiary)",
   justifyContent: "center",
   alignItems: "center",
-  "& h2": {
-    padding: ".875rem 0",
-    display: "flex",
-    margin: "auto",
-    alignSelf: "flex-start",
-  },
 }));
 
 const HeaderAlert = styled(Box)(() => ({
@@ -33,7 +28,6 @@ const HeaderActionsContainer = styled(Box)(() => ({
   backgroundColor: "var(--color-tertiary)",
   alignItems: "center",
   justifyContent: "center",
-  gap: "1rem",
   "&& .MuiLink-root": {
     height: "2.5rem",
     display: "flex",
@@ -47,9 +41,18 @@ const HeaderActionsContainer = styled(Box)(() => ({
   },
 }));
 
-const MobileActionsContainer = styled(Box)(() => ({
-  position: "fixed",
-  backgroundColor: "var(--color-tertiary",
+const UserContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  flexDirection: "row",
+  [theme.breakpoints.up("xs")]: {
+    width: "100%",
+    padding: "1rem",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
 }));
 
 export const Header = () => {
@@ -62,22 +65,26 @@ export const Header = () => {
         <p>✨ versão beta 1.0</p>
       </HeaderAlert>
 
-      <h2>Nickel App</h2>
+      <UserContainer>
+        <h2>Nickel App</h2>
+
+        <UserMenu />
+      </UserContainer>
 
       {isSmallScreen ? (
         <></>
       ) : (
         <HeaderActionsContainer>
-          <Stack direction={"row"}>
-            <Link underline={"none"}>
+          <Stack direction={"row"} spacing={4}>
+            <Link underline={"none"} href={"/explore"}>
               <TextIcon iconName={"FiNavigation"} text={"Explorar"} iconPosition={"left"} />
             </Link>
 
-            <Link underline={"none"}>
+            <Link underline={"none"} href={"/my_rooms"}>
               <TextIcon iconName={"FiCoffee"} text={"Salas"} iconPosition={"left"} />
             </Link>
 
-            <Link underline={"none"}>
+            <Link underline={"none"} href={"/my_interactions"}>
               <TextIcon iconName={"FiInbox"} text={"Interações"} iconPosition={"left"} />
             </Link>
 

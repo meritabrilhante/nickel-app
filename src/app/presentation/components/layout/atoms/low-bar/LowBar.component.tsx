@@ -1,10 +1,4 @@
-import React from "react";
-import { Box, Button, Link, styled, Stack } from "@mui/material";
-import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
-import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
-import LocalCafeIcon from "@mui/icons-material/LocalCafe";
-import { useRouter } from "next/router";
-import { TextIcon } from "../text-icon";
+import { Box, Link, styled, Stack } from "@mui/material";
 import { Icon } from "../icon";
 
 const FullFooterContainer = styled(Box)(() => ({
@@ -41,42 +35,21 @@ const SubFooterContainer = styled(Box)(() => ({
 }));
 
 const LowBarComponent = () => {
-  const router = useRouter();
-  const handleExplore = () => {
-    router.push("/explore");
-  };
-
-  const handleMyRooms = () => {
-    router.push("/my_rooms");
-  };
-
-  const handleMyInteractions = () => {
-    router.push("/my_interactions");
-  };
-
-  const handleProfile = () => {
-    router.push("/profile");
-  };
-
-  const handleMyProfile = () => {
-    router.push("/users/userId");
-  };
-
   return (
     <FullFooterContainer>
       <SubFooterContainer>
         <Stack spacing={3} direction="row">
-          <Link underline={"none"}>
+          <Link underline={"none"} href={"/explore"}>
             <Icon name={"FiNavigation"} />
             <p>Explorar</p>
           </Link>
 
-          <Link underline={"none"}>
+          <Link underline={"none"} href={"/my_rooms"}>
             <Icon name={"FiCoffee"} />
             <p>Salas</p>
           </Link>
 
-          <Link underline={"none"}>
+          <Link underline={"none"} href={"/my_interactions"}>
             <Icon name={"FiInbox"} />
             <p>Interações</p>
           </Link>

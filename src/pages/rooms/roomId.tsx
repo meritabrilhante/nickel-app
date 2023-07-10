@@ -44,7 +44,7 @@ export const RoomId = () => {
           <Stack spacing={4} style={{ width: "100%" }}>
             <TitleHeader title={"Título da Sala"} description={"0x8B5F2A"} />
 
-            <Image src={cover} alt={""} width={470} height={300} layout={response} />
+            <Image src={cover} alt={""} width={470} height={300} />
           </Stack>
 
           <Stack spacing={4}>
