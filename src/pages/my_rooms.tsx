@@ -44,7 +44,7 @@ export const MyRoomsPage = () => {
             marginBottom: "16px",
           }}
         >
-          <h1 style={{ width: "98%" }}>Minhas salas</h1>
+          <h1 style={{ width: "50%" }}>Minhas salas</h1>
           <Button buttonClass={"tertiary"} mainColor={""}>
             <TextIcon iconName={"FiBarChart"} text={"Mais recente"} iconPosition={"right"} />
           </Button>

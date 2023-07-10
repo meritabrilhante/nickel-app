@@ -9,7 +9,7 @@ import {
 } from "./ContentCard";
 import { useRouter } from "next/router";
 
-export const InteractionCard = ({ titulo, badgeColor, texto, id, react }) => {
+export const InteractionCard = ({ titulo, badgeColor, texto, id, react, contentText }) => {
   const router = useRouter();
 
   const handleClick = () => {
@@ -32,22 +32,16 @@ export const InteractionCard = ({ titulo, badgeColor, texto, id, react }) => {
       {react ? (
         <p style={{ width: "fit-content", display: "flex", alignItems: "center" }}>
           <TextIcon iconName={"FiThumbsUp"} text={""} iconPosition={"left"} />
-          <p style={{ marginLeft: "20px" }}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
+          <p style={{ marginLeft: "20px" }}>{contentText}</p>
         </p>
       ) : react === false ? (
         <p style={{ width: "fit-content", display: "flex", alignItems: "center" }}>
           <TextIcon iconName={"FiThumbsDown"} text={""} iconPosition={"left"} />
-          <p style={{ marginLeft: "20px" }}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
+          <p style={{ marginLeft: "20px" }}>{contentText}</p>
         </p>
       ) : (
         <p style={{ width: "fit-content", display: "flex", alignItems: "center" }}>
-          <p style={{ marginLeft: "20px" }}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
+          <p style={{ marginLeft: "20px" }}>{contentText}</p>
         </p>
       )}
 
