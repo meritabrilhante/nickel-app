@@ -110,7 +110,14 @@ export const RoomCard = ({
           )}
         </Stack>
 
-        <Button buttonClass={"tertiary"} size={"small"} width={"200px"}>
+        <Button
+          buttonClass={"tertiary"}
+          size={"small"}
+          width={"200px"}
+          onClick={() => {
+            router.push("rooms/roomId");
+          }}
+        >
           <TextIcon iconName={"FiArrowRight"} text={"Ver Sala"} iconPosition={"right"} />
         </Button>
       </Stack>
