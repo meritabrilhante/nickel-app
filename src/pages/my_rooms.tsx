@@ -28,7 +28,13 @@ export const MyRoomsPage = () => {
   const firstButtonClass = buttonColor ? "primary" : "secondary";
   const secondButtonClass = buttonColor ? "secondary" : "primary";
   return (
-    <MainLayout width={"100%"} pageTitle={"Home"}>
+    <MainLayout
+      width={"100%"}
+      pageTitle={"Minhas Salas"}
+      mainButton={true}
+      mainButtonLabel={<TextIcon iconName={"FiPlus"} text={"Criar Sala"} iconPosition={"left"} />}
+      mainButtonAction={"rooms/new"}
+    >
       <HomeContainer>
         <Stack
           direction={"row"}
@@ -39,8 +45,8 @@ export const MyRoomsPage = () => {
             marginBottom: "16px",
           }}
         >
-          <h1>Minhas salas</h1>
-          <Button buttonClass={"tertiary"}>
+          <h1 style={{ width: "98%" }}>Minhas salas</h1>
+          <Button buttonClass={"tertiary"} mainColor={""}>
             <TextIcon iconName={"FiBarChart"} text={"Mais recente"} iconPosition={"right"} />
           </Button>
         </Stack>

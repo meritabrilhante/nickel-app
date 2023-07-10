@@ -1,5 +1,4 @@
 import { Breadcrumbs } from "@/app/presentation/components/layout/atoms/breadcrumbs";
-import DeleteButton from "@/app/presentation/components/layout/atoms/delete-button/DeleteButton.component";
 import { TitleHeader } from "@/app/presentation/components/layout/atoms/title-header";
 import MainLayout from "@/app/presentation/components/layout/main-layout/MainLayout.component";
 import NewAnswerForm from "@/core/components/answer/NewAnswerForm.component";
@@ -30,8 +29,6 @@ const Answer = () => {
 
         <Stack spacing={2}>
           <h2>Pergunta?</h2>
-
-          <DeleteButton />
 
           <NewAnswerForm />
         </Stack>
