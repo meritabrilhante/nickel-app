@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Button, Link, styled, Stack } from "@mui/material";
-import SearchComponent from "@/core/components/search/Search.component";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import LocalCafeIcon from "@mui/icons-material/LocalCafe";

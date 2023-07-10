@@ -5,8 +5,10 @@ const ContentHeaderContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
-  width: "100%",
+  width: "92%",
   padding: "24px 0",
+  marginLeft: "4%",
+  marginRight: "4%",
 }));
 
 interface ContentHeaderProps {

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Box, BoxProps, Button, Stack, styled } from "@mui/material";
 import Header from "@/app/presentation/components/layout/header/Header.component";
 import Head from "next/head";
-import { TextIcon } from "../atoms/text-icon";
 import { useRouter } from "next/router";
 import { LowBar } from "@/app/presentation/components/layout/atoms/low-bar";
 import { Footer } from "../footer";
@@ -97,7 +96,8 @@ const MainLayout = ({
         <></>
       )}
 
-      {isMobile ? <LowBar /> : <Footer width="100%" />}
+      {isMobile ? <LowBar /> : <> </>}
+      <Footer width="100%" position="relative" />
     </MainLayoutContainer>
   );
 };
