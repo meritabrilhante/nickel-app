@@ -61,7 +61,7 @@ const ExplorePage = () => {
       mainButton={true}
       width="100%"
       pageTitle="Home"
-      mainButtonLabel="+"
+      mainButtonLabel="+ Nova Discussão"
       mainButtonAction="/discussions/new"
     >
       <HomeContainer>

@@ -21,18 +21,6 @@ export const NewDiscussion = () => {
     { label: "Nova Discussão", link: "/" },
   ];
 
-  const router = useRouter();
-
-  const [openModal, setOpenModal] = useState(false);
-
-  const handleClose = () => {
-    setOpenModal(false);
-  };
-
-  const handleOpen = () => {
-    setOpenModal(true);
-  };
-
   return (
     <MainLayout width={"100%"} pageTitle={"Nova Discussão"} mainButton={false}>
       <NewDiscussionContainer>
@@ -41,41 +29,7 @@ export const NewDiscussion = () => {
           <h1>Nova Discussão</h1>
         </Stack>
 
-        <NewDiscussionForm></NewDiscussionForm>
-
-        <Stack
-          direction={"row"}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Button buttonClass={"secondary"} size={"large"} onClick={handleOpen}>
-            ← Voltar
-          </Button>
-
-          <Modal
-            open={openModal}
-            onClose={() => {
-              setOpenModal(false);
-            }}
-            icon={"info"}
-            children={<></>}
-            title={"Tem certeza que deseja sair?"}
-            message={"Você perderá as informações sobre a discussão"}
-          />
-
-          <Button
-            buttonClass={"primary"}
-            size={"large"}
-            onClick={() => {
-              router.push("/discussions/discussionId");
-            }}
-          >
-            + Publicar
-          </Button>
-        </Stack>
+        <NewDiscussionForm />
       </NewDiscussionContainer>
     </MainLayout>
   );
