@@ -2,19 +2,18 @@ import { useRouter } from "next/router";
 import { Box, Stack, styled } from "@mui/material";
 import { Button } from "@/app/presentation/components/layout/atoms/button";
 import SimpleLayout from "@/app/presentation/components/layout/simpleLayout/SimpleLayout.component";
-import { LoginForm } from "@/core/components/LoginForm";
 import React, { useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import { SignupInfosForm } from "@/core/components/SignupInfosForm";
 import { Textarea } from "@/app/presentation/components/layout/atoms/textarea";
 import { TextIcon } from "@/app/presentation/components/layout/atoms/text-icon";
+import { Input } from "@/app/presentation/components/layout/atoms/input";
 
 const SignupContainer = styled(Box)(() => ({
-  width: "50%",
   display: "flex",
-  flexDirection: "column",
   margin: "auto 0",
+  flexDirection: "column",
 }));
 
 const Breadcrumb = styled(Box)(() => ({
@@ -27,12 +26,11 @@ const Breadcrumb = styled(Box)(() => ({
 
 const SignupPage = () => {
   const [mostrarComponenteSignup, setmostrarComponenteSignup] = useState(true);
+  const [mostrarDescricao, setmostrarDescricao] = useState(false);
 
   const alternarComponente = () => {
     setmostrarComponenteSignup(!mostrarComponenteSignup);
   };
-
-  const [mostrarDescricao, setmostrarDescricao] = useState(false);
 
   const router = useRouter();
 
@@ -55,10 +53,23 @@ const SignupPage = () => {
       {mostrarComponenteSignup ? (
         <SignupContainer>
           <p>Nickel App</p>
-          <h1>Cadastre-se</h1>
+          <h1 style={{ marginBottom: "4vh" }}>Cadastre-se</h1>
 
-          <Stack spacing={1}>
-            <LoginForm />
+          <Stack spacing={1} style={{ marginBottom: "10vh" }}>
+            <Stack spacing={6}>
+              <Input
+                label={"E-mail* (obrigatório)"}
+                placeholder={"johndoe@example.com"}
+                type={"email"}
+              />
+
+              <Input
+                label={"Senha* (obrigatório)"}
+                placeholder={"*********"}
+                message={"A senha deve ter no mínimo 8 caracteres"}
+                type="password"
+              />
+            </Stack>
           </Stack>
 
           <Stack spacing={2}>

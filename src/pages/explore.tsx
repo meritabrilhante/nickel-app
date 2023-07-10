@@ -29,7 +29,6 @@ const ExplorePage = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedOption, setSelectedOption] = useState("Discussões");
   const [buttonColor, setButtonColor] = useState(true);
-  const actualColor = buttonColor;
 
   const setButtonTrue = () => {
     setButtonColor(true);
