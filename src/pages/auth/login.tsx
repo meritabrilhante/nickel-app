@@ -1,52 +1,26 @@
-import { useRouter } from "next/router"
-import { Box, Stack, styled } from "@mui/material"
-import { Button } from "@/app/presentation/components/layout/atoms/button"
-import SimpleLayout from "@/app/presentation/components/layout/simpleLayout/SimpleLayout.component"
-import { LoginForm } from "@/core/components/LoginForm"
+import { Box, Stack, styled } from "@mui/material";
+import SimpleLayout from "@/app/presentation/components/layout/simpleLayout/SimpleLayout.component";
+import { LoginForm } from "@/core/components/LoginForm";
 
 const LoginContainer = styled(Box)(() => ({
-  width: "50%",
   display: "flex",
-  flexDirection: "column",
   margin: "auto 0",
-}))
+  flexDirection: "column",
+}));
 
 const LoginPage = () => {
-  const router = useRouter()
-
-  const handleClick = () => {
-    router.push("/home")
-  }
-
   return (
     <SimpleLayout width={"100%"}>
       <LoginContainer>
-        <p>Nickel App</p>
-        <h1>Faça o Login</h1>
+        <Stack spacing={1}>
+          <p>Nickel App</p>
+          <h1>Faça o Login</h1>
+        </Stack>
 
         <LoginForm />
-
-        <Stack spacing={2}>
-          <Button onClick={handleClick} buttonClass={"primary"}>
-            Entrar
-          </Button>
-          <p>
-            Ainda não tem uma conta?
-            <a
-              href="/auth/signup"
-              style={{
-                color: "var(--color-primary-pure)",
-                paddingLeft: "8px",
-                textDecoration: "none",
-              }}
-            >
-              Crie uma conta
-            </a>
-          </p>
-        </Stack>
       </LoginContainer>
     </SimpleLayout>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;
