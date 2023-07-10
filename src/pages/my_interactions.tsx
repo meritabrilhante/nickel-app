@@ -74,7 +74,7 @@ export const MyInteractions = () => {
           contentText="Esse filme é incrível! Mas pera ai, essa plataforma não é só para livros!?"
         />
         <Interaction
-          titulo=""
+          titulo="Curiosidades sobre Dom Casmurro"
           date={"08/02/23"}
           badgeColor="#8257E6"
           texto="Reação"
