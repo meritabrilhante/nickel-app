@@ -11,8 +11,14 @@ import NewRoomForm from "@/core/components/room/NewRoomForm.component";
 const NewRoomContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
-  gap: "32px",
-  height: "100vh",
+  gap: "40px",
+  padding: "32px 0",
+}));
+
+const TitleContainer = styled(Box)(() => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
 }));
 
 export const NewRoom = () => {
@@ -33,9 +39,11 @@ export const NewRoom = () => {
   return (
     <MainLayout width={"100%"} pageTitle={"Criar Sala"} mainButton={false}>
       <NewRoomContainer>
-        <Stack spacing={4}>
+        <Stack spacing={2}>
           <Breadcrumbs path={breadcrumbsPath} />
-          <h1>Criar Sala</h1>
+          <TitleContainer>
+            <h1>Criar Sala</h1>
+          </TitleContainer>
         </Stack>
 
         <NewRoomForm />
