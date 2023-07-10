@@ -27,7 +27,8 @@ interface FooterProps {
 
 const Footer = ({ width, position }: FooterProps) => {
   return (
-    <FooterContainer width={width} position={position}>
+    <></>
+    /*<FooterContainer width={width} position={position}>
       <Stack direction={"row"} spacing={1}>
         <GitHubIcon height={"16px"} />
 
@@ -35,7 +36,7 @@ const Footer = ({ width, position }: FooterProps) => {
           github
         </Link>
       </Stack>
-    </FooterContainer>
+    </FooterContainer>*/
   );
 };
 

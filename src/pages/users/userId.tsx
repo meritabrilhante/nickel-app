@@ -13,7 +13,7 @@ const ProfileUserContainer = styled(Box)(() => ({
   alignItems: "flex-start",
   justiyContent: "space-between",
   height: "100vh",
-  width: "30%",
+  width: "100%",
   gap: "40px",
 }));
 
