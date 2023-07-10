@@ -53,6 +53,10 @@ const LowBarComponent = () => {
     router.push("/profile");
   };
 
+  const handleMyProfile = () => {
+    router.push("/users/userId");
+  };
+
   return (
     <FullFooterContainer>
       <SubFooterContainer>
@@ -72,7 +76,7 @@ const LowBarComponent = () => {
             Interações
           </Button>
 
-          <Button style={styles.button} onClick={handleProfile} size="small">
+          <Button style={styles.button} onClick={handleMyProfile} size="small">
             <LocalCafeIcon />
             Perfil
           </Button>

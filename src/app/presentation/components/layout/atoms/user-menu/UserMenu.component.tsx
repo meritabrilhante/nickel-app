@@ -15,11 +15,11 @@ const styles = {
   },
 };
 
-const UserMenu = () => {
+const UserMenu = ({ onclick }) => {
   return (
     <UserMenuContainer>
       <Stack spacing={1} direction={"row"} alignItems={"center"}>
-        <Button style={styles.button} id="user-menu">
+        <Button onClick={onclick} style={styles.button} id="user-menu">
           <Avatar
             style={{
               borderRadius: "50%",

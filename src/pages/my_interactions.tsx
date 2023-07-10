@@ -15,8 +15,6 @@ const HomeContainer = styled(Box)(() => ({
 
 export const MyInteractions = () => {
   const [buttonColor, setButtonColor] = useState(true);
-  const actualColor = buttonColor;
-
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedOption, setSelectedOption] = useState("Ativas");
 
@@ -34,14 +32,13 @@ export const MyInteractions = () => {
   };
 
   return (
-    <MainLayout width={"100%"} pageTitle={"Home"}>
+    <MainLayout width={"100%"} pageTitle={"Home"} mainButton={false}>
       <HomeContainer>
         <Stack
           direction={"row"}
           style={{
             display: "flex",
             justifyContent: "space-between",
-            width: "100%",
             marginBottom: "16px",
           }}
         >

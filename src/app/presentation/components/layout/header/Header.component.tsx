@@ -95,6 +95,10 @@ const Header = ({ width }: FullHeaderProps) => {
     router.push("/my_interactions");
   };
 
+  const handleMyProfile = () => {
+    router.push("/users/userId");
+  };
+
   return (
     <FullHeaderContainer width={width}>
       <UpHeaderContainer width={"100%"}>
@@ -113,10 +117,10 @@ const Header = ({ width }: FullHeaderProps) => {
             <IconButton>
               <Search />
             </IconButton>
-            <UserMenu />
+            <UserMenu onclick={handleMyProfile} />
           </Stack>
         ) : (
-          <UserMenu />
+          <UserMenu onclick={handleMyProfile} />
         )}
       </MidHeaderContainer>
       {!isMobile && (
