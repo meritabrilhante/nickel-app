@@ -6,19 +6,22 @@ const AnswerCard = styled(Box)(() => ({
   backgroundColor: "var(--color-tertiary)",
   padding: "24px",
   display: "flex",
-  width: "100%",
+  gap: "24px",
   flexDirection: "column",
-  gap: "32px",
-  borderRadius: " 0px 24px 24px 24px",
-  border: "0.8px solid var(--color-light)",
+  borderRadius: " 24px 24px 0px 24px",
+  border: "0.8px solid var(--color-success-pure)",
 }));
 
-const Answer = () => {
+interface AnswerProps {
+  answer: string;
+}
+
+const Answer = ({ answer }: AnswerProps) => {
   return (
     <AnswerCard>
       <UserMenu />
 
-      <p>Lorem ipsum is a simply</p>
+      <p>{answer}</p>
 
       <Stack direction={"row"} style={{ display: "flex", justifyContent: "space-between" }}>
         <Stack direction={"row"} spacing={2}>

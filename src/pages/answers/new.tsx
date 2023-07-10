@@ -8,8 +8,14 @@ const AnswerContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   height: "100vh",
-  gap: "5%",
-  width: "30%",
+  gap: "40px",
+  padding: "32px 0",
+}));
+
+const TitleContainer = styled(Box)(() => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
 }));
 
 const Answer = () => {
@@ -22,13 +28,19 @@ const Answer = () => {
   return (
     <MainLayout width={"100%"} pageTitle={"Resposta"} mainButton={false}>
       <AnswerContainer>
-        <Stack spacing={4} style={{ display: "flex", width: "100%" }}>
+        <Stack spacing={2}>
           <Breadcrumbs path={breadcrumbsPath} />
-          <TitleHeader title={"Responder"} description={"#0x8B5F2A"} />
+          <TitleContainer>
+            <h1>Resposta</h1>
+
+            <p>#123456</p>
+          </TitleContainer>
         </Stack>
 
         <Stack spacing={2}>
-          <h2>Pergunta?</h2>
+          <h2 style={{ lineHeight: "140%" }}>
+            Qual é o principal mistério presente no enredo de Dom Casmurro?
+          </h2>
 
           <NewAnswerForm />
         </Stack>
