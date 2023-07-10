@@ -1,6 +1,6 @@
 import { Input } from "@/app/presentation/components/layout/atoms/input";
 import { Textarea } from "@/app/presentation/components/layout/atoms/textarea";
-import { Box, Stack, Switch, ToggleButton, styled } from "@mui/material";
+import { Box, Stack, Switch, styled } from "@mui/material";
 
 const NewRoomFormContainer = styled(Box)(() => ({
   display: "flex",

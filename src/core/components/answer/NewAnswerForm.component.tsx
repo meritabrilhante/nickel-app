@@ -25,11 +25,11 @@ const NewAnswerForm = () => {
       </Stack>
 
       <Stack direction={"row"} spacing={2} style={{ marginTop: "5%" }}>
-        <Button buttonClass={"secondary"} mainColor={""} size={"large"} onClick={handleGoBack}>
+        <Button buttonClass={"secondary"} size={"large"} onClick={handleGoBack}>
           ← Cancelar
         </Button>
 
-        <Button buttonClass={"primary"} mainColor={""} size={"large"}>
+        <Button buttonClass={"primary"} size={"large"}>
           Publicar
         </Button>
       </Stack>

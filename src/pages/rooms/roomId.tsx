@@ -11,10 +11,10 @@ import { cover } from "public/assets/images";
 
 const RoomContainer = styled(Box)(() => ({
   display: "flex",
+  padding: "32px 0",
   flexDirection: "column",
-  alignItems: "center",
   height: "100vh",
-  width: "30%",
+  gap: "40px",
 }));
 
 export const RoomId = () => {
