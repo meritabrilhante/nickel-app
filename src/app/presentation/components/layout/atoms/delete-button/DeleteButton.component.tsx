@@ -27,7 +27,11 @@ const DeleteButton = ({ modalMessage, modalTitle, action }: DeleteButtonProps) =
 
   return (
     <>
-      <Button onClick={handleOpenDeleteModal} buttonClass={"secondary"} mainColor={""}>
+      <Button
+        onClick={handleOpenDeleteModal}
+        buttonClass={"secondary"}
+        mainColor={"var(--color-error-pure)"}
+      >
         <TextIcon iconName={"FiTrash2"} text={"Excluir"} iconPosition={"left"} />
       </Button>
 
