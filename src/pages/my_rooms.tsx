@@ -15,7 +15,6 @@ const HomeContainer = styled(Box)(() => ({
 
 export const MyRoomsPage = () => {
   const [buttonColor, setButtonColor] = useState(true);
-  const actualColor = buttonColor;
 
   const setButtonTrue = () => {
     setButtonColor(true);

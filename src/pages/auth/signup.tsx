@@ -26,12 +26,11 @@ const Breadcrumb = styled(Box)(() => ({
 
 const SignupPage = () => {
   const [mostrarComponenteSignup, setmostrarComponenteSignup] = useState(true);
+  const [mostrarDescricao, setmostrarDescricao] = useState(false);
 
   const alternarComponente = () => {
     setmostrarComponenteSignup(!mostrarComponenteSignup);
   };
-
-  const [mostrarDescricao, setmostrarDescricao] = useState(false);
 
   const router = useRouter();
 
