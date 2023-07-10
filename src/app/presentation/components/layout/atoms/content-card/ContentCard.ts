@@ -4,12 +4,14 @@ export const ContentCardContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   height: "360px",
-  width: "600px",
+  width: "92%",
   justifyContent: "space-between",
   backgroundColor: "var(--color-tertiary)",
   padding: "32px",
   borderRadius: "var(--border-radius-default)",
   marginBottom: "40px",
+  marginLeft: "4%",
+  marginRight: "4%",
 }));
 
 export const ContentCardHeaderContainer = styled(Box)(() => ({

@@ -34,11 +34,19 @@ const SecondaryButton = styled(Button)(() => ({
 }));
 
 const TertiaryButton = styled(Button)(() => ({
-  color: "var(--color-light)",
-  border: "1px solid var(--color-tertiary)",
   fontSize: "1rem",
-  letterSpacing: "0.1px",
-  fontFamily: "var(--font-family-base)",
+  fontWeight: "var(--font-weight-semibold)",
+  backgroundColor: "transparent",
+  border: "3px solid #9747FF",
+  "&:hover": {
+    backgroundColor: "transparent",
+    color: "var(--color-primary-pure)",
+  },
+}));
+
+const QuarternaryButton = styled(Button)(() => ({
+  fontSize: "1rem",
+  fontWeight: "var(--font-weight-semibold)",
   backgroundColor: "transparent",
   "&:hover": {
     backgroundColor: "transparent",
@@ -50,6 +58,7 @@ const btnComponents = {
   primary: PrimaryButton,
   secondary: SecondaryButton,
   tertiary: TertiaryButton,
+  quarternary: QuarternaryButton,
 };
 
 const IndexMenu = ({ children, buttonClass, onClick, size, width }: ButtonComponentProps) => {

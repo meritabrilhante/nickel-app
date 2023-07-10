@@ -13,7 +13,14 @@ const Home = () => {
     handleRedirect();
   }, []);*/
 
-  return <MainLayout width={"100%"} pageTitle={"Home"}></MainLayout>;
+  return (
+    <MainLayout
+      width={"100%"}
+      pageTitle={"Home"}
+      mainButtonLabel={"+"}
+      mainButton={true}
+    ></MainLayout>
+  );
 };
 
 export default Home;
