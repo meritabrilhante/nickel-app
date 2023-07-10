@@ -1,149 +1,93 @@
-import { Box, BoxProps, Button, Link, styled, Stack } from "@mui/material";
-import SearchComponent from "@/core/components/search/Search.component";
-import { UserMenu } from "../atoms/user-menu";
-import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
-import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
-import LocalCafeIcon from "@mui/icons-material/LocalCafe";
-import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
-import { IconButton, InputAdornment, InputBase } from "@mui/material";
-import { Search } from "@mui/icons-material";
+import { Box, Link, Stack, styled, useMediaQuery, useTheme } from "@mui/material";
+import { TextIcon } from "../atoms/text-icon";
 
-interface HeaderContainerProps extends BoxProps {
-  width: string;
-}
-
-const FullHeaderContainer = styled(Box)(({ width }: HeaderContainerProps) => ({
-  width: "100%",
+const HeaderContainer = styled(Box)(({ theme }) => ({
   display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  width: "inherit",
   flexDirection: "column",
-  marginBottom: "40px",
-}));
-
-const UpHeaderContainer = styled(Box)(({ width }: UpHeaderContainerProps) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  padding: "1rem",
-  height: "2rem",
-  width: "100%",
-  fontWeight: "var(--font-weight-medium)",
-  backgroundColor: "var(--color-primary-pure)",
-}));
-
-const SubHeaderContainer = styled(Box)(() => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  flexDirection: "row",
   backgroundColor: "var(--color-tertiary)",
-  padding: "0.8rem",
-  width: "100%",
-}));
-
-const MidHeaderContainer = styled(Box)(({ width }: HeaderContainerProps) => ({
-  display: "flex",
+  justifyContent: "center",
   alignItems: "center",
-  justifyContent: "space-between",
-  padding: "0.8rem 2rem", // Reduzindo o padding para se adaptar a telas menores
-  width: "100%", // Utilizando a largura total disponível
-  backgroundColor: "var(--color-tertiary)",
-}));
-
-interface FullHeaderProps {
-  width: string;
-}
-
-interface UpHeaderContainerProps {
-  width: string;
-}
-
-const styles = {
-  button: {
-    fontFamily: "var(--font-family-base)",
-    backgroundColor: "transparent",
+  "& h2": {
+    padding: ".875rem 0",
+    display: "flex",
+    margin: "auto",
+    alignSelf: "flex-start",
   },
-};
+}));
 
-const Header = ({ width }: FullHeaderProps) => {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 700);
-    };
+const HeaderAlert = styled(Box)(() => ({
+  display: "flex",
+  width: "inherit",
+  backgroundColor: "var(--color-primary-pure)",
+  alignItems: "center",
+  "& p": {
+    margin: "auto",
+  },
+}));
 
-    handleResize();
+const HeaderActionsContainer = styled(Box)(() => ({
+  display: "flex",
+  width: "inherit",
+  padding: ".875rem 0",
+  backgroundColor: "var(--color-tertiary)",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "1rem",
+  "&& .MuiLink-root": {
+    height: "2.5rem",
+    display: "flex",
+    padding: "1rem",
+    color: "var(--color-light)",
+    cursor: "pointer",
+    "&:hover": {
+      backgroundColor: "var(--color-secondary)",
+      borderRadius: ".875rem",
+    },
+  },
+}));
 
-    window.addEventListener("resize", handleResize);
+const MobileActionsContainer = styled(Box)(() => ({
+  position: "fixed",
+  backgroundColor: "var(--color-tertiary",
+}));
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-  const router = useRouter();
-  const handleExplore = () => {
-    router.push("/explore");
-  };
-
-  const handleMyRooms = () => {
-    router.push("/my_rooms");
-  };
-
-  const handleMyInteractions = () => {
-    router.push("/my_interactions");
-  };
-
-  const handleMyProfile = () => {
-    router.push("/users/userId");
-  };
+export const Header = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <FullHeaderContainer width={width}>
-      <UpHeaderContainer width={"100%"}>
-        <p> ✨ versão beta 1.0</p>
-      </UpHeaderContainer>
+    <HeaderContainer>
+      <HeaderAlert>
+        <p>✨ versão beta 1.0</p>
+      </HeaderAlert>
 
-      <MidHeaderContainer width={"100%"}>
-        <Link href="/home" underline="none" color="inherit">
-          <h2>Nickel App</h2>
-        </Link>
+      <h2>Nickel App</h2>
 
-        {!isMobile ? <SearchComponent /> : <div> </div>}
+      {isSmallScreen ? (
+        <></>
+      ) : (
+        <HeaderActionsContainer>
+          <Stack direction={"row"}>
+            <Link underline={"none"}>
+              <TextIcon iconName={"FiNavigation"} text={"Explorar"} iconPosition={"left"} />
+            </Link>
 
-        {isMobile ? (
-          <Stack gap={2} direction={"row"} alignItems={"center"}>
-            <IconButton>
-              <Search />
-            </IconButton>
-            <UserMenu onclick={handleMyProfile} />
+            <Link underline={"none"}>
+              <TextIcon iconName={"FiCoffee"} text={"Salas"} iconPosition={"left"} />
+            </Link>
+
+            <Link underline={"none"}>
+              <TextIcon iconName={"FiInbox"} text={"Interações"} iconPosition={"left"} />
+            </Link>
+
+            <Link underline={"none"}>
+              <TextIcon iconName={"FiSearch"} text={"Pesquisar"} iconPosition={"left"} />
+            </Link>
           </Stack>
-        ) : (
-          <UserMenu onclick={handleMyProfile} />
-        )}
-      </MidHeaderContainer>
-      {!isMobile && (
-        <SubHeaderContainer>
-          <Stack spacing={2} direction={"row"}>
-            <Button style={styles.button} onClick={handleExplore}>
-              <SpaceDashboardIcon />
-              Explorar
-            </Button>
-
-            <Button style={styles.button} onClick={handleMyRooms}>
-              <MeetingRoomIcon />
-              Minhas Salas
-            </Button>
-
-            <Button style={styles.button} onClick={handleMyInteractions}>
-              <LocalCafeIcon />
-              Minhas Interações
-            </Button>
-          </Stack>
-        </SubHeaderContainer>
+        </HeaderActionsContainer>
       )}
-    </FullHeaderContainer>
+    </HeaderContainer>
   );
 };
 

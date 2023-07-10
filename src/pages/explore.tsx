@@ -32,20 +32,6 @@ const ExplorePage = () => {
   const firstButtonClass = buttonColor ? "tertiary" : "quarternary";
   const secondButtonClass = buttonColor ? "quarternary" : "tertiary";
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 700);
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };

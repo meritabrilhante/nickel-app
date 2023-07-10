@@ -4,36 +4,41 @@ import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import LocalCafeIcon from "@mui/icons-material/LocalCafe";
 import { useRouter } from "next/router";
+import { TextIcon } from "../text-icon";
+import { Icon } from "../icon";
 
 const FullFooterContainer = styled(Box)(() => ({
   width: "100%",
   position: "fixed",
+  zIndex: "9999",
+  backgroundColor: "var(--color-tertiary)",
   bottom: 0,
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
-  borderTop: "2px solid grey",
+  borderTop: "0.05px solid var(--color-secondary)",
 }));
 
 const SubFooterContainer = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "space-between",
   flexDirection: "row",
-  backgroundColor: "var(--color-tertiary)",
-  padding: "0.8rem",
-  width: "100%",
-  paddingLeft: "10px",
-  paddingRight: "10px",
-}));
-
-const styles = {
-  button: {
-    fontFamily: "var(--font-family-base)",
-    backgroundColor: "transparent",
+  padding: "0.875rem",
+  "&& .MuiLink-root": {
+    display: "flex",
+    height: "2.5rem",
+    alignItems: "center",
+    flexDirection: "column",
+    color: "var(--color-light)",
+    cursor: "pointer",
+    "&:hover": {
+      backgroundColor: "var(--color-secondary)",
+      borderRadius: ".875rem",
+    },
   },
-};
+}));
 
 const LowBarComponent = () => {
   const router = useRouter();
@@ -61,25 +66,25 @@ const LowBarComponent = () => {
     <FullFooterContainer>
       <SubFooterContainer>
         <Stack spacing={3} direction="row">
-          <Button style={styles.button} onClick={handleExplore} size="small">
-            <SpaceDashboardIcon />
-            Explorar
-          </Button>
+          <Link underline={"none"}>
+            <Icon name={"FiNavigation"} />
+            <p>Explorar</p>
+          </Link>
 
-          <Button style={styles.button} onClick={handleMyRooms} size="small">
-            <MeetingRoomIcon />
-            Minhas Salas
-          </Button>
+          <Link underline={"none"}>
+            <Icon name={"FiCoffee"} />
+            <p>Salas</p>
+          </Link>
 
-          <Button style={styles.button} onClick={handleMyInteractions} size="small">
-            <LocalCafeIcon />
-            Interações
-          </Button>
+          <Link underline={"none"}>
+            <Icon name={"FiInbox"} />
+            <p>Interações</p>
+          </Link>
 
-          <Button style={styles.button} onClick={handleMyProfile} size="small">
-            <LocalCafeIcon />
-            Perfil
-          </Button>
+          <Link underline={"none"}>
+            <Icon name={"FiSearch"} />
+            <p>Pesquisar</p>
+          </Link>
         </Stack>
       </SubFooterContainer>
     </FullFooterContainer>

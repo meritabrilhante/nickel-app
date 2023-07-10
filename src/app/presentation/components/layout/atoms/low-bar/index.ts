@@ -1,1 +1,1 @@
-export { default as LowBar } from "./lowBar.component";
+export { default as LowBar } from "./LowBar.component";
