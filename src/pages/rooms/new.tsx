@@ -10,7 +10,6 @@ import NewRoomForm from "@/core/components/room/NewRoomForm.component";
 
 const NewRoomContainer = styled(Box)(() => ({
   display: "flex",
-  width: "30%",
   flexDirection: "column",
   gap: "32px",
   height: "100vh",
@@ -49,7 +48,7 @@ export const NewRoom = () => {
             justifyContent: "space-between",
           }}
         >
-          <Button buttonClass={"secondary"} size={"large"} onClick={handleOpen} mainColor={""}>
+          <Button buttonClass={"secondary"} size={"large"} onClick={handleOpen}>
             ← Voltar
           </Button>
 
@@ -70,7 +69,6 @@ export const NewRoom = () => {
             onClick={() => {
               router.push("/rooms/roomId");
             }}
-            mainColor={""}
           >
             + Criar Sala
           </Button>

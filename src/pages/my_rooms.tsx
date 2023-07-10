@@ -5,12 +5,21 @@ import MainLayout from "@/app/presentation/components/layout/main-layout/MainLay
 import { Box, Stack, colors, styled } from "@mui/material";
 import { SwitchMenu } from "@/app/presentation/components/layout/atoms/switching-menu";
 import { useState } from "react";
+import RoomCard from "@/app/presentation/components/layout/atoms/content-card/RoomCard.component";
+import { Badge } from "@/app/presentation/components/layout/atoms/badge";
+import { Breadcrumbs } from "@/app/presentation/components/layout/atoms/breadcrumbs";
 
 const HomeContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
   justiyContent: "space-between",
+}));
+
+const TitleContainer = styled(Box)(() => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
 }));
 
 export const MyRoomsPage = () => {
@@ -24,6 +33,7 @@ export const MyRoomsPage = () => {
     setButtonColor(false);
   };
 
+  const breadcrumbsPath = [{ label: "Salas", link: "/my_rooms" }];
   const firstButtonClass = buttonColor ? "primary" : "secondary";
   const secondButtonClass = buttonColor ? "secondary" : "primary";
   return (
@@ -35,22 +45,14 @@ export const MyRoomsPage = () => {
       mainButtonAction={"rooms/new"}
     >
       <HomeContainer>
-        <Stack
-          direction={"row"}
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "100%",
-            marginBottom: "16px",
-          }}
-        >
-          <h1 style={{ width: "50%" }}>Minhas salas</h1>
-          <Button buttonClass={"tertiary"} mainColor={""}>
-            <TextIcon iconName={"FiBarChart"} text={"Mais recente"} iconPosition={"right"} />
-          </Button>
+        <Stack spacing={1} style={{ marginTop: "20px", marginBottom: "20px" }}>
+          <Breadcrumbs path={breadcrumbsPath} />
+          <TitleContainer>
+            <h1>Minhas salas</h1>
+          </TitleContainer>
         </Stack>
 
-        <Stack direction={"row"} width={"100%"}>
+        <Stack direction={"row"} width={"100%"} style={{ marginBottom: "20px" }}>
           <SwitchMenu onClick={setButtonTrue} buttonClass={firstButtonClass} width="100%">
             {" "}
             Participando
@@ -61,9 +63,20 @@ export const MyRoomsPage = () => {
           </SwitchMenu>
         </Stack>
 
-        <ContentCard type={"room"} />
-        <ContentCard type={"room"} />
-        <ContentCard type={"room"} />
+        <RoomCard
+          visibility={"lock"}
+          roomName={"Programação Orientada a Objeto"}
+          roomId={"#569823"}
+          badge={
+            <Badge mainColor={"#3B949A"} borderRadius={"9999px"} height={"32px"}>
+              <TextIcon iconName={"FiCpu"} text={"Tecnologia"} iconPosition={"left"} />
+            </Badge>
+          }
+          description={
+            "Sala voltando para os alunos matriculados na disciplina de POO do curso Sistemas para Internet"
+          }
+          institution={"Instituto Federal de Brasília"}
+        />
       </HomeContainer>
     </MainLayout>
   );

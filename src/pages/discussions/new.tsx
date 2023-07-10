@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 
 const NewDiscussionContainer = styled(Box)(() => ({
   display: "flex",
-  width: "30%",
+  width: "100%",
   flexDirection: "column",
   gap: "32px",
   height: "100vh",
@@ -51,7 +51,7 @@ export const NewDiscussion = () => {
             justifyContent: "space-between",
           }}
         >
-          <Button buttonClass={"secondary"} size={"large"} onClick={handleOpen} mainColor={""}>
+          <Button buttonClass={"secondary"} size={"large"} onClick={handleOpen}>
             ← Voltar
           </Button>
 
@@ -72,7 +72,6 @@ export const NewDiscussion = () => {
             onClick={() => {
               router.push("/discussions/discussionId");
             }}
-            mainColor={""}
           >
             + Publicar
           </Button>
