@@ -5,13 +5,23 @@ import MainLayout from "@/app/presentation/components/layout/main-layout/MainLay
 import { Box, styled } from "@mui/material";
 import { Button } from "@/app/presentation/components/layout/atoms/button";
 import React, { useState, useEffect } from "react";
-import { SwitchMenu } from "@/app/presentation/components/layout/atoms/switching-menu";
+import { Breadcrumbs } from "@/app/presentation/components/layout/atoms/breadcrumbs";
+import DiscussionCard from "@/app/presentation/components/layout/atoms/content-card/DiscussionCard.component";
+import RoomCard from "@/app/presentation/components/layout/atoms/content-card/RoomCard.component";
+import { Badge } from "@/app/presentation/components/layout/atoms/badge";
 
 const HomeContainer = styled(Box)(() => ({
   display: "flex",
+  padding: "32px 0",
   flexDirection: "column",
-  alignItems: "flex-start",
+  height: "100vh",
+  gap: "40px",
+}));
+
+const TitleContainer = styled(Box)(() => ({
+  display: "flex",
   justifyContent: "space-between",
+  alignItems: "center",
 }));
 
 const ExplorePage = () => {
@@ -45,6 +55,8 @@ const ExplorePage = () => {
     handleMenuClose();
   };
 
+  const breadcrumbsPath = [{ label: "Explorar", link: "/explore" }];
+
   return (
     <MainLayout
       mainButton={true}
@@ -54,67 +66,43 @@ const ExplorePage = () => {
       mainButtonAction="/discussions/new"
     >
       <HomeContainer>
-        {isMobile ? (
-          <Stack direction={"row"} width={"100%"}>
-            <SwitchMenu onClick={setButtonTrue} buttonClass={firstButtonClass} width="100%">
-              {" "}
-              Discussões
-            </SwitchMenu>
-            <SwitchMenu onClick={setButtonFalse} buttonClass={secondButtonClass} width="100%">
-              {" "}
-              Salas
-            </SwitchMenu>
-          </Stack>
-        ) : (
-          <>
-            <Stack
-              direction={"row"}
-              style={{
-                display: "flex",
-                gap: "10px",
-                width: "100%",
-              }}
-            >
-              <Stack
-                direction="row"
-                style={{
-                  display: "flex",
-                  gap: "10px",
-                  width: "100%",
-                  marginBottom: "16px",
-                  cursor: "pointer",
-                }}
-                alignItems="center"
-                onClick={handleMenuOpen}
-              >
-                <h1>{selectedOption}</h1>
-                <TextIcon iconName="FiChevronDown" iconPosition="right" text="" />
-              </Stack>
-              <Button buttonClass={"tertiary"}>
-                <TextIcon iconName={"FiTrello"} text={"Alfabética"} iconPosition={"right"} />
-              </Button>
-              <Menu
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-              >
-                <MenuItem onClick={() => handleOptionSelect("Salas")}>Salas</MenuItem>
-                <MenuItem onClick={() => handleOptionSelect("Discussões")}>Discussões</MenuItem>
-              </Menu>
-            </Stack>
-          </>
-        )}
-        <ContentCard type={selectedOption === "Discussões" ? "discussion" : "rooms"} />
-        <ContentCard type={selectedOption === "Discussões" ? "discussion" : "rooms"} />
-        <ContentCard type={selectedOption === "Discussões" ? "discussion" : "rooms"} />
+        <Stack spacing={1}>
+          <Breadcrumbs path={breadcrumbsPath} />
+          <TitleContainer>
+            <h1>Explorar</h1>
+
+            <Button buttonClass={"tertiary"} size={"small"} width={"156px"}>
+              <TextIcon iconName={"FiFilter"} text={"Mais Recentes"} iconPosition={"left"} />
+            </Button>
+          </TitleContainer>
+        </Stack>
+
+        <DiscussionCard
+          discussionTitle={"Qual é o principal mistério presente no enredo de Dom Casmurro?"}
+          discussionId={"#123456"}
+          description={"Como ele influencia a narrativa?"}
+          badge={
+            <Badge mainColor={"#5FEE98"} borderRadius={"9999px"} height={"32px"}>
+              <TextIcon iconName={"FiBook"} text={"Literatura Brasileira"} iconPosition={"left"} />
+            </Badge>
+          }
+          author={"Machado de Assis"}
+          bookName={"Dom Casmurro"}
+        />
+        <RoomCard
+          visibility={"lock"}
+          roomName={"Programação Orientada a Objeto"}
+          roomId={"#569823"}
+          badge={
+            <Badge mainColor={"#3B949A"} borderRadius={"9999px"} height={"32px"}>
+              <TextIcon iconName={"FiCpu"} text={"Tecnologia"} iconPosition={"left"} />
+            </Badge>
+          }
+          description={
+            "Sala voltando para os alunos matriculados na disciplina de POO do curso Sistemas para Internet"
+          }
+          institution={"Instituto Federal de Brasília"}
+        />
       </HomeContainer>
     </MainLayout>
   );

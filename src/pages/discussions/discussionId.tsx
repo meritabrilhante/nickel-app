@@ -5,8 +5,6 @@ import { ContentCard } from "@/app/presentation/components/layout/atoms/content-
 import { Button } from "@/app/presentation/components/layout/atoms/button";
 import { TextIcon } from "@/app/presentation/components/layout/atoms/text-icon";
 import { TitleHeader } from "@/app/presentation/components/layout/atoms/title-header";
-import { Modal } from "@/app/presentation/components/layout/atoms/modal";
-import { useState } from "react";
 import Answer from "@/app/presentation/components/layout/atoms/answer/Answer.component";
 
 const DiscussionContainer = styled(Box)(() => ({
@@ -33,7 +31,12 @@ export const Discussion = () => {
       <DiscussionContainer>
         <Stack
           spacing={4}
-          style={{ display: "flex", justifyContent: "space-between", width: "100%" }}
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            width: "100%",
+            alignItems: "center",
+          }}
         >
           <Breadcrumbs path={breadcrumbsPath} />
 

@@ -11,47 +11,44 @@ interface ButtonComponentProps extends ButtonProps {
   size?: ButtonSize;
   children?: React.ReactNode;
   buttonClass: ButtonClass;
-  mainColor?: string;
+  width?: string;
 }
 
-const PrimaryButton = styled(Button)(({ mainColor }: ButtonComponentProps) => ({
+const PrimaryButton = styled(Button)(({ width }: ButtonComponentProps) => ({
   fontSize: "1rem",
   fontWeight: "var(--font-weight-semibold)",
-  mainColor: mainColor,
   backgroundColor: "var(--color-primary-pure)",
+  width: width,
 }));
 
-const SecondaryButton = styled(Button)(({ mainColor }: ButtonComponentProps) => ({
+const SecondaryButton = styled(Button)(({ width }: ButtonComponentProps) => ({
   color: "var(--color-light)",
   textSize: "1rem",
   fontWeight: "var(--font-weight-semibold)",
   letterSpacing: "0.2px",
   backgroundColor: "transparent",
-  mainColor: mainColor,
+  width: width,
   "&:hover": {
     backgroundColor: "var(--color-secondary)",
   },
 }));
 
-const TertiaryButton = styled(Button)(({ mainColor }: ButtonComponentProps) => ({
+const TertiaryButton = styled(Button)(({ width }: ButtonComponentProps) => ({
   color: "var(--color-light)",
   border: "1px solid var(--color-tertiary)",
   fontSize: "1rem",
   letterSpacing: "0.1px",
   fontFamily: "var(--font-family-base)",
-  mainColor: mainColor,
   backgroundColor: "transparent",
   "&:hover": {
     backgroundColor: "transparent",
     color: "var(--color-primary-pure)",
   },
+  width: width,
 }));
 
-export const QuartenaryButton = styled(Button)(({ mainColor }: ButtonComponentProps) => ({
-  color: mainColor,
-  backgroundColor: hexToRgb(mainColor, "0.8"),
+export const QuartenaryButton = styled(Button)(() => ({
   borderRadius: "8px",
-  border: `2px solid ${mainColor}`,
   fontSize: "1rem",
   letterSpacing: "0.1px",
   fontFamily: "var(--font-family-base)",
@@ -67,19 +64,11 @@ const btnComponents = {
   quartenary: QuartenaryButton,
 };
 
-const ButtonComponent = ({
-  children,
-  buttonClass,
-  onClick,
-  size,
-  mainColor,
-}: ButtonComponentProps) => {
+const ButtonComponent = ({ children, buttonClass, onClick, size, width }: ButtonComponentProps) => {
   const BtnComponent = btnComponents[buttonClass];
 
-  console.log(mainColor);
-
   return (
-    <BtnComponent onClick={onClick} size={size} buttonClass={buttonClass} mainColor={mainColor}>
+    <BtnComponent onClick={onClick} size={size} buttonClass={buttonClass} width={width}>
       {children}
     </BtnComponent>
   );

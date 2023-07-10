@@ -15,9 +15,21 @@ import MenuComponent from "../menu/Menu.Component";
 
 export interface RoomCardProps {
   visibility: "lock" | "unlock";
+  roomName: string;
+  roomId: string;
+  badge: React.ReactNode;
+  description: string;
+  institution: string;
 }
 
-export const RoomCard = ({ visibility }: RoomCardProps) => {
+export const RoomCard = ({
+  visibility,
+  roomName,
+  roomId,
+  badge,
+  description,
+  institution,
+}: RoomCardProps) => {
   const router = useRouter();
 
   const handleClick = () => {
@@ -54,9 +66,7 @@ export const RoomCard = ({ visibility }: RoomCardProps) => {
   return (
     <ContentCardContainer>
       <ContentCardHeaderContainer>
-        <Badge mainColor={"#CC54C5"} borderRadius={"99px"} height={"32px"} onClick={handleClick}>
-          <TextIcon iconName={"FiMusic"} text={"Música"} iconPosition={"left"} />
-        </Badge>
+        {badge}
 
         <IconButton
           onClick={handleClickModal}
@@ -82,15 +92,13 @@ export const RoomCard = ({ visibility }: RoomCardProps) => {
       </ContentCardHeaderContainer>
 
       <ContentCardTitleContainer>
-        <h2>Literatura Brasileira</h2>
-        <p>#151639</p>
+        <h2>{roomName}</h2>
+        <p>{roomId}</p>
       </ContentCardTitleContainer>
 
-      <TextIcon iconName={"FiHome"} text={"Instituição"} iconPosition={"left"} />
+      <TextIcon iconName={"FiHome"} text={institution} iconPosition={"left"} />
 
-      <p style={{ width: "fit-content" }}>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      </p>
+      <p style={{ width: "fit-content" }}>{description}</p>
 
       <Stack direction={"row"} style={{ display: "flex", justifyContent: "space-between" }}>
         <Stack direction={"row"} spacing={2}>
@@ -102,7 +110,7 @@ export const RoomCard = ({ visibility }: RoomCardProps) => {
           )}
         </Stack>
 
-        <Button buttonClass={"tertiary"} size={"small"} mainColor={""}>
+        <Button buttonClass={"tertiary"} size={"small"} width={"200px"}>
           <TextIcon iconName={"FiArrowRight"} text={"Ver Sala"} iconPosition={"right"} />
         </Button>
       </Stack>

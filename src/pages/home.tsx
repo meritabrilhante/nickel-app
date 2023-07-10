@@ -13,7 +13,7 @@ const HomeContainer = styled(Box)(() => ({
 
 export const HomePage = () => {
   return (
-    <MainLayout width={"100%"} pageTitle={"Home"}>
+    <MainLayout width={"100%"} pageTitle={"Home"} mainButton={false}>
       <HomeContainer>
         <Stack
           direction={"row"}

@@ -23,7 +23,7 @@ const HeaderAlert = styled(Box)(() => ({
 
 const HeaderActionsContainer = styled(Box)(() => ({
   display: "flex",
-  width: "inherit",
+  maxWidth: "1140px",
   padding: ".875rem 0",
   backgroundColor: "var(--color-tertiary)",
   alignItems: "center",
@@ -46,8 +46,15 @@ const UserContainer = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   alignItems: "center",
   flexDirection: "row",
-  [theme.breakpoints.up("xs")]: {
-    width: "100%",
+  [theme.breakpoints.down("md")]: {
+    width: "95%",
+    padding: "1rem",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+  [theme.breakpoints.up("md")]: {
+    width: "60%",
     padding: "1rem",
     flexDirection: "row",
     justifyContent: "space-around",

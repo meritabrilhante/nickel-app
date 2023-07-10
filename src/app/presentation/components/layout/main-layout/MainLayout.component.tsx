@@ -19,6 +19,16 @@ const MainLayoutContainer = styled(Box)(({ width }: MainLayoutContainerProps) =>
   height: "100vh",
 }));
 
+const ChildrenContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  height: "100vh",
+  maxWidth: "40%",
+  [theme.breakpoints.down("sm")]: {
+    maxWidth: "90%",
+  },
+}));
+
 interface MainLayoutProps {
   children: React.ReactNode;
   width: string;
@@ -59,7 +69,8 @@ const MainLayout = ({
       </Head>
 
       <Header />
-      {children}
+
+      <ChildrenContainer>{children}</ChildrenContainer>
 
       {mainButton ? (
         <Button

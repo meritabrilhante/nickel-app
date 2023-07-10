@@ -14,12 +14,24 @@ import React, { useState } from "react";
 import { Modal } from "../modal";
 import { DeleteButton } from "../delete-button";
 
-export const DiscussionCard = () => {
-  const router = useRouter();
+interface DiscussionCardProps {
+  discussionTitle: string;
+  discussionId: string;
+  description: string;
+  badge: React.ReactNode;
+  bookName?: string;
+  author?: string;
+}
 
-  const handleClick = () => {
-    router.push("/categories");
-  };
+export const DiscussionCard = ({
+  discussionId,
+  discussionTitle,
+  description,
+  badge,
+  bookName,
+  author,
+}: DiscussionCardProps) => {
+  const router = useRouter();
 
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openArchiveModal, setOpenArchiveModal] = useState(false);
@@ -66,9 +78,7 @@ export const DiscussionCard = () => {
   return (
     <ContentCardContainer>
       <ContentCardHeaderContainer>
-        <Badge mainColor={"#CC54C5"} borderRadius={"99px"} height={"32px"} onClick={handleClick}>
-          <TextIcon iconName={"FiMusic"} text={"Música"} iconPosition={"left"} />
-        </Badge>
+        {badge}
 
         <IconButton
           onClick={handleClickModal}
@@ -94,27 +104,35 @@ export const DiscussionCard = () => {
       </ContentCardHeaderContainer>
 
       <ContentCardTitleContainer>
-        <h2>Título de Discussão</h2>
-        <p>#151639</p>
+        <h2 style={{ lineHeight: "140%" }}>{discussionTitle}</h2>
+        <p>{discussionId}</p>
       </ContentCardTitleContainer>
 
       <Stack spacing={1}>
-        <TextIcon iconName={"FiBook"} text={"Book"} iconPosition={"left"} />
+        <TextIcon iconName={"FiBook"} text={`${bookName}`} iconPosition={"left"} />
 
-        <TextIcon iconName={"FiFeather"} text={"Autor"} iconPosition={"left"} />
+        <TextIcon iconName={"FiFeather"} text={`${author}`} iconPosition={"left"} />
       </Stack>
 
-      <p style={{ width: "fit-content" }}>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      </p>
+      <p style={{ width: "fit-content" }}>{description}</p>
 
-      <Stack direction={"row"} style={{ display: "flex", justifyContent: "space-between" }}>
+      <Stack
+        direction={"row"}
+        style={{ width: "100%", display: "flex", justifyContent: "space-between" }}
+      >
         <Stack direction={"row"} spacing={2}>
           <TextIcon iconName={"FiThumbsUp"} text={"1"} iconPosition={"left"} />
           <TextIcon iconName={"FiMessageCircle"} text={"1"} iconPosition={"left"} />
         </Stack>
 
-        <Button buttonClass={"tertiary"} size={"small"} mainColor={""}>
+        <Button
+          buttonClass={"tertiary"}
+          size={"small"}
+          width={"200px"}
+          onClick={() => {
+            router.push("/discussions/discussionId");
+          }}
+        >
           <TextIcon iconName={"FiArrowRight"} text={"Ver discussão"} iconPosition={"right"} />
         </Button>
       </Stack>
@@ -131,7 +149,6 @@ export const DiscussionCard = () => {
         <>
           <Button
             buttonClass={"secondary"}
-            mainColor={""}
             onClick={() => {
               setOpenArchiveModal(false);
             }}
@@ -139,9 +156,7 @@ export const DiscussionCard = () => {
             ← Voltar
           </Button>
 
-          <Button buttonClass={"secondary"} mainColor={""}>
-            Arquivar
-          </Button>
+          <Button buttonClass={"secondary"}>Arquivar</Button>
         </>
       </Modal>
     </ContentCardContainer>
