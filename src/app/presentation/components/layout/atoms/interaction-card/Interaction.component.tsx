@@ -11,8 +11,8 @@ export interface ContentCardProps {
   titulo: string;
   react?: boolean;
 }
-
 export const ContentContainer = styled(Box)(() => ({
+  width: "100%",
   marginBottom: "0",
 }));
 
